@@ -22,13 +22,18 @@
 
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include:
- > * Why is it important or interesting to you? \n This project is interesting to us for 2 reasons, A, because we enjoy video games, and B, games tend to be much easier to express one's creativity with than most other projects. Our planning so far is pretty modest, and because we don't have enough time/aren't expected to create a gui.
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
->     we currently only plan on using C++, VSCode, and the GitHub project board, but that is liable to change.
- > * What will be the input/output of your project?
+ > * ### Why is it important or interesting to you?
+>   
+>    This project is interesting to us for 2 reasons, A, because we enjoy video games, and B, games tend to be much easier to express one's creativity with than most other projects. Our planning so far is pretty modest, and because we don't have enough time/aren't expected to create a gui.
+ > * ### What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
+>     We currently only plan on using C++, VSCode, and the GitHub project board, but that is liable to change.
+>    
+ > * ### What will be the input/output of your project?
 >    The main input would be the player's text based decision on what to do within the game, i.e. selecting stats, choosing paths, doing combat, etc. The outputs would be text explaining to the player what the consequences of their actions are, i.e. gaining health, hitting traps, getting rewards, etc.
- > * What are the features that the project provides?
->    In terms of features, we haven't thought of plot, but are thinking of a generic dungeon crawling fantasy rpg, i.e. characters will have stats, classes, equipment, abilites, etc., there would be a randomly generated dungeon to navigate with various obstacles and loot, something to do with the loot, experience/levels, etc. In addition, we need to include saving/loading games, and perhaps permanent progress between saves, such as unlocking new equipment or classes, à la roguelikes. 
+>    
+ > * ### What are the features that the project provides?
+>    In terms of features, we haven't thought of plot, but are thinking of a generic dungeon crawling fantasy rpg, i.e. characters will have stats, classes, equipment, abilites, etc., there would be a randomly generated dungeon to navigate with various obstacles and loot, something to do with the loot, experience/levels, etc. In addition, we need to include saving/loading games, and perhaps permanent progress between saves, such as unlocking new equipment or classes, à la roguelikes.
+>    
 
  > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
  > 
