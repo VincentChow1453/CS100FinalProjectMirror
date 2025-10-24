@@ -3,7 +3,7 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\>"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project title\>
+# \<RPG Game\>
  > Your author list below should include links to all members GitHub (remove existing author).
  
  > Authors:
@@ -23,12 +23,16 @@
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include:
  > * Why is it important or interesting to you?
+>     This project is interesting to us for 2 reasons, A, because we enjoy video games, and B, games tend to be much easier to express one's creativity with than most other projects. Our planning so far is pretty modest, and because we don't have enough time/aren't expected to create a gui.
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
+>     we currently only plan on using C++, VSCode, and the GitHub project board, but that is liable to change.
  > * What will be the input/output of your project?
+>    The main input would be the player's text based decision on what to do within the game, i.e. selecting stats, choosing paths, doing combat, etc. The outputs would be text explaining to the player what the consequences of their actions are, i.e. gaining health, hitting traps, getting rewards, etc.
  > * What are the features that the project provides?
- > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
- > This project is interesting to us for 2 reasons, A, because we enjoy video games, and B, games tend to be much easier to express one's creativity with than most other projects. Our planning so far is pretty modest, and because we don't have enough time/aren't expected to create a gui, we currently only plan on using C++, VSCode, and the GitHub project board, but that is liable to change. The main input would be the player's text based decision on what to do within the game, i.e. selecting stats, choosing paths, doing combat, etc. The outputs would be text explaining to the player what the consequences of their actions are, i.e. gaining health, hitting traps, getting rewards, etc. In terms of features, we haven't thought of plot, but are thinking of a generic dungeon crawling fantasy rpg, i.e. characters will have stats, classes, equipment, abilites, etc., there would be a randomly generated dungeon to navigate with various obstacles and loot, something to do with the loot, experience/levels, etc. In addition, we need to include saving/loading games, and perhaps permanent progress between saves, such as unlocking new equipment or classes, à la roguelikes. 
+>    In terms of features, we haven't thought of plot, but are thinking of a generic dungeon crawling fantasy rpg, i.e. characters will have stats, classes, equipment, abilites, etc., there would be a randomly generated dungeon to navigate with various obstacles and loot, something to do with the loot, experience/levels, etc. In addition, we need to include saving/loading games, and perhaps permanent progress between saves, such as unlocking new equipment or classes, à la roguelikes. 
 
+ > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+ > 
 
  > You also need to set up an empty project board using GitHub projects (board view with columns for a scrum board). Make sure you add the board under your project repository. You should also add a `Product Backlog` and an `In testing` column. Please also rename the `TODO` column to `Sprint Backlog` and the `In Progress` column to `In Development`. All columns should be in the right order.
 > 
