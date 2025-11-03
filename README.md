@@ -42,6 +42,12 @@
 > 
 > Finally, one member from your team needs to submit the Project Group Signups form (link available on Canvas) to provide a link to your team's project repository before the deadline for this porposal phase.
  > ## Phase II
+> Class Diagram:
+> [CS100 Cool Team User Class Diagram.pdf](https://github.com/user-attachments/files/23294026/CS100.Cool.Team.User.Class.Diagram.pdf)
+>
+> Navigation Diagram:
+> [CS100 Cool Team User Navigation Diagram.pdf](https://github.com/user-attachments/files/23294030/CS100.Cool.Team.User.Navigation.Diagram.pdf)
+
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
  > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
  > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.``
