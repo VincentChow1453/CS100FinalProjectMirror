@@ -59,17 +59,19 @@
 >  
 >  * Map Navigation
 >
->    Game Map: Tracks player’s location and level using a 2D array.
+>    - Game Map: Tracks player’s location and level using a 2D array.
 >    
->    Room: Base class for all the types of rooms (Battle Room, Shop Room, Event Room, Entrance)
+>    - Room: Base class for all the types of rooms (Battle Room, Shop Room, Event Room, Entrance)
 >    
->    Map Generator: Creates the layout and places rooms at random
+>    - Map Generator: Creates the layout and places rooms at random
 >
 >  * Player & Inventory - Track player, items, and progression
+>    
 >    - Character: stores stats (name, HP, items)
 >    - Inventory: list of player’s items they have obtained
 >    - Item: Usable/collectable item from the game
 > * Combat/Encounters - Battles, and in-game events
+>   
 > - Combat: Turn based combat
 > - Monsters: Enemies with different HP, names, etc.
 > - Event: Randomly generated events besides combat
