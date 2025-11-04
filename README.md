@@ -72,9 +72,9 @@
 >    - Item: Usable/collectable item from the game
 > * Combat/Encounters - Battles, and in-game events
 >   
-> - Combat: Turn based combat
-> - Monsters: Enemies with different HP, names, etc.
-> - Event: Randomly generated events besides combat
+>    -  Combat: Turn based combat
+>     -   Monsters: Enemies with different HP, names, etc.
+>     -    Event: Randomly generated events besides combat
 > =================================================
 
 
