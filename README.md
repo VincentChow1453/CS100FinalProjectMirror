@@ -51,9 +51,7 @@
 > ## Description of diagrams:
 > The class diagram we created outlines the foundation of our RPG along with its core features. We have identified the most significant features an RPG should have: Menus & UI, Map Navigation, Characters & Inventory, and Combat/Encounters. Each class has a focus to keep the game organized and easy to develop. We do this by using inheritance to customize and differentiate behaviors of the groupings of classes.
 >
-> * Menus & UI
->   
->    Boundary classes that handle user interaction and game navigation. They display choices or settings to choose from which call the appropriate game logic.
+> * Menus & UI - Boundary classes that handle user interaction and game navigation. They display choices or settings to choose from which call the appropriate game logic.
 >   - Game stems/starts with character select
 >   - Map Navigation Menu: Allows player to move throughout the map with dedicated controls
 >   - Battle Menu: Different choices when interacting with combat system
@@ -67,17 +65,15 @@
 >    
 >    Map Generator: Creates the layout and places rooms at random
 >
->  * Player & Inventory
->    
->    Track player, items, and progression
+>  * Player & Inventory - Track player, items, and progression
 >    - Character: stores stats (name, HP, items)
 >    - Inventory: list of player’s items they have obtained
 >    - Item: Usable/collectable item from the game
-> * Combat/Encounters
->   - Battles, and in-game events
+> * Combat/Encounters - Battles, and in-game events
 > - Combat: Turn based combat
 > - Monsters: Enemies with different HP, names, etc.
 > - Event: Randomly generated events besides combat
+> =================================================
 
 
 
