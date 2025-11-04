@@ -42,11 +42,32 @@
 > 
 > Finally, one member from your team needs to submit the Project Group Signups form (link available on Canvas) to provide a link to your team's project repository before the deadline for this porposal phase.
  > ## Phase II
-> Class Diagram:
+> ## Class Diagram:
 > [CS100 Cool Team User Class Diagram.pdf](https://github.com/user-attachments/files/23294026/CS100.Cool.Team.User.Class.Diagram.pdf)
 >
-> Navigation Diagram:
+> ## Navigation Diagram:
 > [CS100 Cool Team User Navigation Diagram.pdf](https://github.com/user-attachments/files/23294030/CS100.Cool.Team.User.Navigation.Diagram.pdf)
+>
+> ## Description of diagrams:
+> The class diagram we created outlines the foundation of our RPG along with its core features. We have identified the most significant features an RPG should have: Menus & UI, Map Navigation, Characters & Inventory, and Combat/Encounters. Each class has a focus to keep the game organized and easy to develop. We do this by using inheritance to customize and differentiate behaviors of the groupings of classes.
+>
+> * Menus & UI
+>   Boundary classes that handle user interaction and game navigation. They display choices or settings to choose from which call the appropriate game logic.
+>   - Game stems/starts with character select
+>   - Map Navigation Menu: Allows player to move throughout the map with dedicated controls
+>   - Battle Menu: Different choices when interacting with combat system
+>   - Shop Menu: Player can buy/sell items using the game’s shop
+>  
+>  * Map Navigation
+>    Game Map: Tracks player’s location and level using a 2D array.
+>    Room: Base class for all the types of rooms
+>    - Battle Room
+>    - Shop Room
+>    - Event Room
+>    - Entrance
+>    Map Generator: Creates the layout and places rooms at random
+
+
 
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
  > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
