@@ -75,6 +75,7 @@
 >    -  Combat: Turn based combat
 >     -   Monsters: Enemies with different HP, names, etc.
 >     -    Event: Randomly generated events besides combat
+>   
 > =================================================
 
 
