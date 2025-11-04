@@ -57,7 +57,7 @@
 >   - Battle Menu: Different choices when interacting with combat system
 >   - Shop Menu: Player can buy/sell items using the game’s shop
 >  
->  * Map Navigation
+>  * Map Navigation - How the player moves around the map utilizing controls
 >
 >    - Game Map: Tracks player’s location and level using a 2D array.
 >    
