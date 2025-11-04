@@ -48,7 +48,7 @@
 > ## Navigation Diagram:
 > [CS100 Cool Team User Navigation Diagram.pdf](https://github.com/user-attachments/files/23294030/CS100.Cool.Team.User.Navigation.Diagram.pdf)
 >
-> ## Description of diagrams:
+> ## Description of diagram:
 > The class diagram we created outlines the foundation of our RPG along with its core features. We have identified the most significant features an RPG should have: Menus & UI, Map Navigation, Characters & Inventory, and Combat/Encounters. Each class has a focus to keep the game organized and easy to develop. We do this by using inheritance to customize and differentiate behaviors of the groupings of classes.
 >
 > * Menus & UI - Boundary classes that handle user interaction and game navigation. They display choices or settings to choose from which call the appropriate game logic.
