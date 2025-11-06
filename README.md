@@ -77,6 +77,25 @@
 >     -    Event: Randomly generated events besides combat
 >   
 > =================================================
+>
+>
+>## Screen Layouts:
+> Navigation Menu:<br />
+><img width="840" height="258" alt="Screenshot 2025-11-05 183534" src="https://github.com/user-attachments/assets/6a8e7c8b-fccf-4f70-9d52-cc1b03e5e5b2" /><br />
+> Battle Menu:<br />
+><img width="762" height="200" alt="cs100Project-BattleMenu" src="https://github.com/user-attachments/assets/ed89dddd-b612-4ae4-a07c-7d7e68963d6c" /><br />
+
+> Inventory Menu:<br />
+><img width="189" height="138" alt="CS100Project-InventoryMenu" src="https://github.com/user-attachments/assets/db880668-a39e-4c8b-8a95-b9c75c9d5c59" /><br />
+
+> Event Menu:<br />
+><img width="592" height="153" alt="CS100Project-EventMenu" src="https://github.com/user-attachments/assets/e0b878e4-b10b-4ed7-895e-0252299ea827" /><br />
+
+> Shop Menu:<br />
+><img width="676" height="120" alt="CS100Project-ShopMenu" src="https://github.com/user-attachments/assets/a318d4f8-eca8-453e-8912-55381d53a21b" /><br />
+
+> Stats Menu:<br />
+><img width="219" height="135" alt="CS100Project-StatsMenu" src="https://github.com/user-attachments/assets/b48dc539-d22e-4d26-93a7-5c353246e239" /><br />
 
 
 
