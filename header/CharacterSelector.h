@@ -7,10 +7,12 @@
 
 class CharacterSelector {
 private:
-    std::vector<Character> availableClasses;
-    Character* selectedClass;
+    std::vector<CharacterClass> availableClasses;
+    CharacterClass* selectedClass;
 
     public:
+    CharacterSelector();
+    
     void displayOptions();
     void selectClass(const std::string& className);
     void displaySelection();

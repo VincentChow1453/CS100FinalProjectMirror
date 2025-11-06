@@ -2,23 +2,18 @@
 #define CHARACTERCLASS_H
 
 #include <string>
-#include "Inventory.h"
-
-class Character;
 
 class CharacterClass {
 private:
-    std::string name;
-    std::string characterType;
-    int health;
-    int mana;
-    int strength;
-    int level;
-    Inventory playerInv;
-    Character* selectedClass; //Reference to the selected character
+    std::string classType;
 
-    public:
-     void displayInfo() const;
+     int baseHealth;
+    int baseMana;
+    int baseStrength;
+    int baseLevel;
+
+public:
+    void displayClassInfo() const;
 };
 
 #endif // CHARACTERCLASS_H
