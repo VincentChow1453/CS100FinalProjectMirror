@@ -2,7 +2,7 @@
 #define SHOP_H
 
 #include <vector>
-#include "Item.h"
+#include "item.h"
 
 class Shop {
 private:
