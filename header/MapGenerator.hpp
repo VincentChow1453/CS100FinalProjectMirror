@@ -1,6 +1,5 @@
-#ifndef DUNGEONMAP_HPP
-#define DUNGEONMAP_HPP
-#include "DungeonMap.hpp"
+#ifndef DUNGEONGENERATOR_HPP
+#define DUNGEONGENERATOR_HPP
 #include "Room.hpp"
 #include <vector>
 using std::vector;
@@ -11,7 +10,7 @@ class MapGenerator {
         int numRoomsLeft;
         int entranceX,entranceY;
     public:
-        vector<vector<Room>>* GenerateMap(int numRooms);
+        vector<vector<Room*>> GenerateMap(int numRooms);
 };
 
-#endif /* DUNGEONMAP_HPP */
+#endif /* DUNGEONGENERATOR_HPP */

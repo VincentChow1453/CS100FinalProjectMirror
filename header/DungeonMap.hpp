@@ -5,11 +5,11 @@
 using std::vector;
 class DungeonMap {
     private:
-        vector<vector<Room>>* mapMatrix;
         int playerX, playerY;
         int mapWidth,mapHeight;//width=x, height=y
         int floorLevel;
     public:
+        vector<vector<Room*>> mapMatrix;
         void DisplayMap();
 
 };
