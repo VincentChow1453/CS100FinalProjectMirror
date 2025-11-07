@@ -80,6 +80,7 @@
 >
 >
 >## Screen Layouts:
+> The game will entirely played via the terminal, and players will interact via various menus. Each menu will consist of a body of text, describing the situation to the player and prompting a choice. This will be followed by a numbered list of choices/actions the player may take.<br />
 > Navigation Menu:<br />
 ><img width="840" height="258" alt="Screenshot 2025-11-05 183534" src="https://github.com/user-attachments/assets/6a8e7c8b-fccf-4f70-9d52-cc1b03e5e5b2" /><br />
 > Battle Menu:<br />
