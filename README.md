@@ -43,8 +43,8 @@
 > Finally, one member from your team needs to submit the Project Group Signups form (link available on Canvas) to provide a link to your team's project repository before the deadline for this porposal phase.
  > ## Phase II
 > ## Class Diagram:
-> [CS100 Cool Team User Class Diagram.pdf](https://github.com/user-attachments/files/23294026/CS100.Cool.Team.User.Class.Diagram.pdf)
->
+>[CS100 Cool Team User Class Diagram (1).pdf](https://github.com/user-attachments/files/23426944/CS100.Cool.Team.User.Class.Diagram.1.pdf)
+
 > ## Navigation Diagram:
 > [CS100 Cool Team User Navigation Diagram.pdf](https://github.com/user-attachments/files/23294030/CS100.Cool.Team.User.Navigation.Diagram.pdf)
 >
