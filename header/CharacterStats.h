@@ -18,4 +18,4 @@ private:
      void displayInfo() const;
 };
 
-#endif // CHARACTERCLASS_H
+#endif // CHARACTERSTATS_H
