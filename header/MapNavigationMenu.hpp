@@ -9,7 +9,7 @@ class MapNavigationMenu {
         MapGenerator generator;
     public:
         MapNavigationMenu();
-        MapNavigationMenu(int numRooms, int newWidth, int newHeight);
+        MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight);
         DungeonMap* getMap();
         void GoLeft();
         void GoRight();

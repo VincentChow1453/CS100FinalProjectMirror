@@ -4,7 +4,7 @@ using namespace std;
 MapNavigationMenu::MapNavigationMenu(){
     map=DungeonMap();
 }
-MapNavigationMenu::MapNavigationMenu(int numRooms, int newWidth, int newHeight){
+MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight){
     map=DungeonMap();
     map.mapMatrix=generator.GenerateMap(numRooms, newWidth, newHeight);
     map.setMapDimensions(newWidth, newHeight);

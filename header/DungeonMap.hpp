@@ -18,8 +18,8 @@ class DungeonMap {
         int getPlayerY() const;
         int getWidth() const;
         int getHeight() const;
-        void setPlayerCoords(int x, int y);
-        void setMapDimensions(int newWidth, int newHeight);
+        void setPlayerCoords(const int x,const int y);
+        void setMapDimensions(const int newWidth,const int newHeight);
 
 };
 

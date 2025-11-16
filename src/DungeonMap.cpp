@@ -44,11 +44,11 @@ int DungeonMap::getHeight() const{
 int DungeonMap::getWidth() const{
     return width;
 }
-void DungeonMap::setPlayerCoords(int x, int y){
+void DungeonMap::setPlayerCoords(const int x,const int y){
     playerX=x;
     playerY=y;
 }
-void DungeonMap::setMapDimensions(int newWidth, int newHeight){
+void DungeonMap::setMapDimensions(const int newWidth,const int newHeight){
     height=newHeight;
     width=newWidth;
 }
