@@ -39,5 +39,8 @@ int DungeonMap::getWidth(){
 void DungeonMap::setPlayerCoords(int x, int y){
     playerX=x;
     playerY=y;
-    return;
+}
+void DungeonMap::setMapDimensions(int newWidth, int newHeight){
+    height=newHeight;
+    width=newWidth;
 }

@@ -7,7 +7,7 @@ using std::vector;
 class DungeonMap {
     private:
         int playerX, playerY;
-        int width=5,height=5;//width=x, height=y
+        int width,height;//width=x, height=y
         int floorLevel;
         MapGenerator generator;
     public:
@@ -19,6 +19,7 @@ class DungeonMap {
         int getWidth();
         int getHeight();
         void setPlayerCoords(int x, int y);
+        void setMapDimensions(int newWidth, int newHeight);
 
 };
 

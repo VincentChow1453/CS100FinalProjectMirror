@@ -10,10 +10,3 @@ ADD_EXECUTABLE(runAllTests
 )
 target_link_libraries(runAllTests gmock gtest gtest_main)
 
-ADD_EXECUTABLE(runTerminalTests
-    test/terminalTest.cpp
-    src/DungeonMap.cpp
-    src/MapGenerator.cpp
-    src/MapNavigationMenu.cpp
-    src/Room.cpp
-)

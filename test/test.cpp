@@ -6,12 +6,15 @@
 using  namespace std;
 TEST(DungeonMap, testSetPlayerCoordsEmptyMap){
     DungeonMap map;
+    int newMapHeight=0, newMapWidth=0;
     map.setPlayerCoords(0,0);
+    map.setMapDimensions(newMapHeight,newMapWidth);
     ASSERT_TRUE((map.getPlayerX()==0)&&(map.getPlayerY()==0));
 }
 TEST(DungeonMap, testSetPlayerCoordsPopulatedMap){
     DungeonMap map;
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int i=0; i<5;i++){
         tempMapRow.push_back(nullptr);
     }
@@ -22,6 +25,7 @@ TEST(DungeonMap, testSetPlayerCoordsPopulatedMap){
         }
         map.mapMatrix.push_back(tempMapRow);
     }
+    map.setMapDimensions(newMapHeight,newMapWidth);
     map.setPlayerCoords(1,1);
     ASSERT_TRUE((map.getPlayerX()==1)&&(map.getPlayerY()==1));
 }
@@ -29,6 +33,7 @@ TEST(DungeonMap, testBottomRowOutput){
     testing::internal::CaptureStdout();
     DungeonMap map;
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int i=0; i<5;i++){
         tempMapRow.push_back(new Room);
     }
@@ -39,6 +44,7 @@ TEST(DungeonMap, testBottomRowOutput){
         }
         map.mapMatrix.push_back(tempMapRow);
     }
+    map.setMapDimensions(newMapHeight,newMapWidth);
     map.DisplayMap();
     string output = testing::internal::GetCapturedStdout();
     ASSERT_EQ(output, "[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[X][X][X][X][X]\n");
@@ -52,6 +58,7 @@ TEST(DungeonMap, testPlayerPosition){
     testing::internal::CaptureStdout();
     DungeonMap map;
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(new Room);
     }
@@ -62,6 +69,7 @@ TEST(DungeonMap, testPlayerPosition){
         }
         map.mapMatrix.push_back(tempMapRow);
     }
+    map.setMapDimensions(newMapHeight,newMapWidth);
     map.setPlayerCoords(0,0);
     map.DisplayMap();
     string output = testing::internal::GetCapturedStdout();
@@ -76,6 +84,7 @@ TEST(DungeonMap, testLeftColumn){
     testing::internal::CaptureStdout();
     DungeonMap map;
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     tempMapRow.push_back(new Room);
     for(int j=1; j<5;j++){
         tempMapRow.push_back(nullptr);
@@ -88,6 +97,7 @@ TEST(DungeonMap, testLeftColumn){
         }
         map.mapMatrix.push_back(tempMapRow);
     }
+    map.setMapDimensions(newMapHeight,newMapWidth);
     map.setPlayerCoords(0,0);
     map.DisplayMap();
     string output = testing::internal::GetCapturedStdout();
@@ -103,6 +113,7 @@ TEST(DungeonMapMenu, testSuccessfullLeft){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
         for(int x=0;x<5;x++){
         tempMapRow.push_back(new Room);
     }
@@ -113,6 +124,7 @@ TEST(DungeonMapMenu, testSuccessfullLeft){
         }
         map->mapMatrix.push_back(tempMapRow);
     }
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(1,0);
     //[ ][ ][ ][ ][ ]
     //[ ][ ][ ][ ][ ]
@@ -133,7 +145,8 @@ TEST(DungeonMapMenu, testLeftOutOfBounds){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
-        for(int x=0;x<5;x++){
+    int newMapHeight=5, newMapWidth=5;
+    for(int x=0;x<5;x++){
         tempMapRow.push_back(new Room);
     }
     map->mapMatrix.push_back(tempMapRow);//The last added row is on the bottom
@@ -143,6 +156,7 @@ TEST(DungeonMapMenu, testLeftOutOfBounds){
         }
         map->mapMatrix.push_back(tempMapRow);
     }
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(0,0);
     //[ ][ ][ ][ ][ ]
     //[ ][ ][ ][ ][ ]
@@ -163,6 +177,7 @@ TEST(DungeonMapMenu, testLeftEmptyRoom){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -181,6 +196,7 @@ TEST(DungeonMapMenu, testLeftEmptyRoom){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(2,3);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -197,11 +213,11 @@ TEST(DungeonMapMenu, testLeftEmptyRoom){
     ASSERT_EQ(output, "Cannot go any further Left\n[ ][ ][X][ ][ ]\n[ ][ ][H][ ][ ]\n[X][X][X][X][X]\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n");
 }
 TEST(DungeonMapMenu, testRightSuccessful){
-
     testing::internal::CaptureStdout();
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -220,6 +236,7 @@ TEST(DungeonMapMenu, testRightSuccessful){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(2,2);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -240,6 +257,7 @@ TEST(DungeonMapMenu, testRightOutOfBounds){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -258,6 +276,7 @@ TEST(DungeonMapMenu, testRightOutOfBounds){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(4,2);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -278,6 +297,7 @@ TEST(DungeonMapMenu, testRightEmptyRoom){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -296,6 +316,7 @@ TEST(DungeonMapMenu, testRightEmptyRoom){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(2,3);
     //[ ][ ][X][ ][ ]
     //[ ][ ][H][ ][ ]
@@ -316,6 +337,7 @@ TEST(DungeonMapMenu, testUpSuccessful){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -334,6 +356,7 @@ TEST(DungeonMapMenu, testUpSuccessful){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapWidth,newMapHeight);
     map->setPlayerCoords(2,2);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -354,6 +377,7 @@ TEST(DungeonMapMenu, testUpOutOfBounds){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -372,6 +396,7 @@ TEST(DungeonMapMenu, testUpOutOfBounds){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapWidth,newMapHeight);
     map->setPlayerCoords(2,4);
     //[ ][ ][H][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -392,6 +417,7 @@ TEST(DungeonMapMenu, testUpEmptyRoom){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -410,6 +436,7 @@ TEST(DungeonMapMenu, testUpEmptyRoom){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapWidth,newMapHeight);
     map->setPlayerCoords(3,2);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -430,6 +457,7 @@ TEST(DungeonMapMenu, testDownSuccessful){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -448,6 +476,7 @@ TEST(DungeonMapMenu, testDownSuccessful){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(2,2);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -468,6 +497,7 @@ TEST(DungeonMapMenu, testDownOutOfBounds){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -486,6 +516,7 @@ TEST(DungeonMapMenu, testDownOutOfBounds){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(2,0);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -506,6 +537,7 @@ TEST(DungeonMapMenu, testDownEmptyRoom){
     MapNavigationMenu mapMenu;
     DungeonMap* map=mapMenu.getMap();
     vector<Room*> tempMapRow;
+    int newMapHeight=5, newMapWidth=5;
     for(int x=0;x<5;x++){
         tempMapRow.push_back(nullptr);
     }
@@ -524,6 +556,7 @@ TEST(DungeonMapMenu, testDownEmptyRoom){
     map->mapMatrix.push_back(tempMapRow);
     tempMapRow.at(2)=new Room;
     map->mapMatrix.push_back(tempMapRow);
+    map->setMapDimensions(newMapHeight,newMapWidth);
     map->setPlayerCoords(3,2);
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
@@ -539,5 +572,22 @@ TEST(DungeonMapMenu, testDownEmptyRoom){
     string output = testing::internal::GetCapturedStdout();
     ASSERT_EQ(output, "Cannot go any further Down\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n[X][X][X][H][X]\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n");
 }
-
+TEST(MapGenerator, testNumRooms){
+    MapGenerator generator;
+    int numRooms=10;
+    int newMapWidth=10;
+    int newMapHeight=10;
+    DungeonMap map;
+    map.mapMatrix=generator.GenerateMap(numRooms, newMapWidth, newMapHeight);
+    map.setMapDimensions(newMapHeight,newMapWidth);
+    int countedRooms=0;
+    for(int y=0;y<map.getHeight();y++){
+        for(int x=0; x<map.getWidth();x++){
+            if(map.mapMatrix.at(y).at(x)!=nullptr){
+                countedRooms++;
+            }
+        }
+    }
+    EXPECT_EQ(countedRooms,numRooms);
+}
 

@@ -2,7 +2,7 @@
 #include "../header/MapGenerator.hpp"
 #include <iostream>
 using std::vector;
-vector<vector<Room*>> MapGenerator::GenerateMap(int numRooms){
+vector<vector<Room*>> MapGenerator::GenerateMap(int targetNumRooms){
     std::cout<<"GenerateMap stub. Return a 5x5 vector. Rows 1-4 should be empty, Row 5 should be full"<<std::endl;
     vector<vector<Room*>> tempMap;
     
