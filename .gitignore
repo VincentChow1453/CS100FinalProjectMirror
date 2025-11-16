@@ -1,0 +1,8 @@
+ScreenLayout.cpp
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+lib/
+runAllTests
+runTerminalTests

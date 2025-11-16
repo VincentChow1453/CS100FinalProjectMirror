@@ -1,14 +1,17 @@
 #ifndef MAPNAVIGATIONMENU_HPP
 #define MAPNAVIGATIONMENU_HPP
 #include "DungeonMap.hpp"
+#include "MapGenerator.hpp"
 
 class MapNavigationMenu {
     private:
+        DungeonMap map;
     public:
-        void GoLeft(DungeonMap* currMap);
-        void GoRight(DungeonMap* currMap);
-        void GoUp(DungeonMap* currMap);
-        void GoDown(DungeonMap* currMap);
+        DungeonMap* getMap();
+        void GoLeft();
+        void GoRight();
+        void GoUp();
+        void GoDown();
 };
 
 #endif /* MAPNAVIGATIONMENU_HPP */
