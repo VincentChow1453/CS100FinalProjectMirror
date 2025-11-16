@@ -9,15 +9,15 @@ class DungeonMap {
         int playerX, playerY;
         int width,height;//width=x, height=y
         int floorLevel;
-        MapGenerator generator;
     public:
+        DungeonMap();
         ~DungeonMap();
-        vector<vector<Room*>> mapMatrix;
-        void DisplayMap();
-        int getPlayerX();
-        int getPlayerY();
-        int getWidth();
-        int getHeight();
+        vector<vector<Room*>>* mapMatrix=nullptr;
+        void DisplayMap() const;
+        int getPlayerX() const;
+        int getPlayerY() const;
+        int getWidth() const;
+        int getHeight() const;
         void setPlayerCoords(int x, int y);
         void setMapDimensions(int newWidth, int newHeight);
 
