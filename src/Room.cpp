@@ -1,4 +1,4 @@
-#include "../header/Room.hpp"
+#include "Room.hpp"
 #include <iostream>
 using namespace std;
 void Room::TriggerEncounter(){

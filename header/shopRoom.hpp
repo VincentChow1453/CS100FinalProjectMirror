@@ -1,7 +1,18 @@
-class shopRoom: public Room {
-    private:
-        Shop roomShop;
+#ifndef SHOPROOM_H
+#define SHOPROOM_H
 
-    public:
-        void triggerEncounter();
+#include "Room.hpp"
+#include "shop.hpp"
+#include "boundaryShopMenu.hpp"
+#include "player.hpp"
+
+class ShopRoom : public Room {
+private:
+    Shop roomShop;
+
+public:
+    ShopRoom() {}               // optional constructor
+    void TriggerEncounter(Player& player) override;
 };
+
+#endif // SHOPROOM_H

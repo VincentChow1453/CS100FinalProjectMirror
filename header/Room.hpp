@@ -1,9 +1,15 @@
 #ifndef ROOM_H
 #define ROOM_H
-class Room{
-    private:
-        bool activated;
-    public:
-        void virtual TriggerEncounter();//=0; //Room should be an abstract class once we create its subclasses.
+#include "player.hpp"
+
+
+class Room {
+private:
+    bool activated;
+
+public:
+    virtual void TriggerEncounter(Player& player) = 0; // PURE VIRTUAL = abstract class
+    virtual ~Room() = default;            // recommended for polymorphism
 };
-#endif //ROOM_HPP
+
+#endif // ROOM_H
