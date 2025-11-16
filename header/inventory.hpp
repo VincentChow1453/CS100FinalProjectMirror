@@ -10,12 +10,9 @@ private:
     vector<Item> items;
 
 public:
-    void addItem(const Item& item) { items.push_back(item); }
+    void addItem(const Item& item);
 
-    void removeItem(int index) {
-        if (index >= 0 && index < items.size())
-            items.erase(items.begin() + index);
-    }
+    void removeItem(int index);
 
     void displayInventory() const;
 };

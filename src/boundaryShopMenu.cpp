@@ -13,6 +13,17 @@ void BoundaryShopMenu::checkShop(Shop& shop, Player& player){
 
         if (selectionChoice == 1) {
             shop.displayItems();
+            cout << "\nWhat do you want to buy? (enter index, -1 to cancel): ";
+            int buyChoice;
+            cin >> buyChoice;
+
+                if (buyChoice == -1) {
+                    cout << "Cancelled.\n";
+                } 
+                else {
+                    cout << "You selected item #" << buyChoice << endl;
+                    // (Buying logic will go here later)
+                }
         }
         else if (selectionChoice == 2) {
             int index;
