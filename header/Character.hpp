@@ -1,7 +1,6 @@
-// Character.hpp
 #pragma once
 #include <string>
-
+// Simple Character class for battle simulation
 class Character {
 private:
     int hp;
@@ -13,7 +12,6 @@ public:
     void takeDamage(int dmg) { hp -= dmg; if (hp < 0) hp = 0; }
     void gainXP(int amount) { xp += amount; }
 
-    // getters for testing
     int getHP() const { return hp; }
     int getXP() const { return xp; }
 };

@@ -1,23 +1,30 @@
 #include "BattleMenu.hpp"
 #include <iostream>
-using namespace std;
-
-BattleMenu::BattleMenu(const MonsterStats& m) : selection_choice(0), monster(m) {}
-
+// Constructor initializing the battle menu with a monster
+BattleMenu::BattleMenu(const MonsterStats& m) : monster(m), selection_choice(0) {}
+// Displays the battle options to the player
 void BattleMenu::displayMenu() const {
-    cout << "1. Attack\n2. Run\n";
+    std::cout << "1. Attack\n2. Run\n";
 }
-
-void BattleMenu::chooseOption(int choice) {
-    selection_choice = choice;
+// Returns to the map (placeholder function)
+void BattleMenu::returnToMap() {
+    std::cout << "Returning to map...\n";
+}
+// Starts the battle encounter
+void BattleMenu::startEncounter() {
+    std::cout << "Battle started with " << monster.getName() << "!\n";
+}
+// Handles the player's choice during the battle
+void BattleMenu::chooseOption(int selection) {
+    selection_choice = selection;
     if (selection_choice == 1) {
-        cout << "You attack " << monster.getName() << "!\n";
+        std::cout << "You attack " << monster.getName() << "!\n";
     } else {
-        cout << "You try to run!\n";
+        returnToMap();
     }
 }
-
+// Runs the battle menu interaction
 void BattleMenu::run() {
     displayMenu();
-    chooseOption(1); // default attack for test
+    chooseOption(selection_choice);
 }

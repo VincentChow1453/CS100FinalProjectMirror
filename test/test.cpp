@@ -1,73 +1,69 @@
-#include "MonsterStats.hpp"
-#include "Character.hpp"
-#include "BattleRoom.hpp"
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
+#include "../header/Character.hpp"
+#include "../header/MonsterStats.hpp"
+#include "../header/BattleRoom.hpp"
+#include "../header/BattleMenu.hpp"
 
-// MonsterStats Tests
+// MonsterStats Tests 
 TEST(MonsterStatsTest, BasicInitialization) {
-    MonsterStats slime("Slime", 20, 5, 10);
+    MonsterStats goblin("Goblin", 30, 5, 10);
 
-    // Check name
-    EXPECT_EQ(slime.getName(), "Slime");
-    // Check HP
-    EXPECT_EQ(slime.getHealth(), 20);
-    // Check damage
-    EXPECT_EQ(slime.getDamage(), 5);
-    // Check XP reward
-    EXPECT_EQ(slime.getXPReward(), 10);
+    EXPECT_EQ(goblin.getName(), "Goblin");
+    EXPECT_EQ(goblin.getHealth(), 30);
+    EXPECT_EQ(goblin.getDamage(), 5);
+    EXPECT_EQ(goblin.getXPReward(), 10);
 }
 
-TEST(MonsterStatsTest, AttackPlayer) {
-    MonsterStats goblin("Goblin", 30, 8, 15);
-    Character player;
-    int initialHP = player.getHP();
-
-    // Monster attacks the player
-    goblin.attack(player);
-
-    // Check if player's HP decreased correctly
-    EXPECT_EQ(player.getHP(), initialHP - goblin.getDamage());
-}
-
-TEST(MonsterStatsTest, ExactDamageKill) {
-    MonsterStats orc("Orc", 10, 7, 20);
+TEST(MonsterStatsTest, AttackAndDie) {
+    MonsterStats goblin("Goblin", 20, 5, 10);
     Character hero;
-    int initialHP = hero.getHP();
 
-    // Deal exact damage to kill the monster
-    orc.takeDamage(orc.getHealth());
+    goblin.attack(hero);
+    EXPECT_EQ(hero.getHP(), 95); // 100 - 5
 
-    // Monster should be dead
-    EXPECT_TRUE(orc.isDead());
-    // Player HP should remain unchanged
-    EXPECT_EQ(hero.getHP(), initialHP);
+    goblin.takeDamage(20);
+    EXPECT_TRUE(goblin.isDead());
+
+    goblin.die(hero);
+    EXPECT_EQ(hero.getXP(), 10); // hero gains xp
 }
 
-// Character Tests
+// Character Tests 
 TEST(CharacterTest, HPAndXPManipulation) {
     Character hero;
 
-    // Reduce HP
     hero.takeDamage(30);
-    // Check HP reduction
     EXPECT_EQ(hero.getHP(), 70);
 
-    // Increase XP
     hero.gainXP(50);
-    // Check XP increase
     EXPECT_EQ(hero.getXP(), 50);
 }
 
 // BattleRoom Tests
 TEST(BattleRoomTest, SingleMonsterAccess) {
-    MonsterStats troll("Troll", 40, 10, 25);
-    BattleRoom room(troll);
+    MonsterStats slime("Slime", 10, 3, 5);
+    BattleRoom room(slime);
 
-    // Access the monster in the battle room
     MonsterStats& monsterRef = room.getMonster();
+    EXPECT_EQ(monsterRef.getName(), "Slime");
+    EXPECT_EQ(monsterRef.getHealth(), 10);
+}
 
-    // Check if the monster's name matches
-    EXPECT_EQ(monsterRef.getName(), "Troll");
-    // Check if the monster's HP matches
-    EXPECT_EQ(monsterRef.getHealth(), 40);
+// BattleMenu Tests 
+TEST(BattleMenuTest, ChooseOptionAttack) {
+    MonsterStats slime("Slime", 10, 3, 5);
+    BattleMenu menu(slime);
+
+    // Simulate player choosing attack
+    menu.chooseOption(1); // attack
+    // No hp/xp changes here because BattleMenu only prints for now
+}
+
+TEST(BattleMenuTest, ChooseOptionRun) {
+    MonsterStats slime("Slime", 10, 3, 5);
+    BattleMenu menu(slime);
+
+    // Simulate player choosing run
+    menu.chooseOption(2); // run
+    // Should just call returnToMap (prints message)
 }
