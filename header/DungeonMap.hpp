@@ -13,6 +13,8 @@ class DungeonMap {
         DungeonMap();
         ~DungeonMap();
         vector<vector<Room*>>* mapMatrix=nullptr;
+        Room* getRoom(const int x, const int y);
+        Room* getPlayerRoom();
         void DisplayMap() const;
         int getPlayerX() const;
         int getPlayerY() const;

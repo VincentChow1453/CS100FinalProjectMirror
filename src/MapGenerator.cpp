@@ -7,7 +7,7 @@ vector<vector<Room*>>* MapGenerator::GenerateMap(int numRooms, const int mapWidt
     if(numRooms>mapWidth*mapHeight){
         throw runtime_error("ERROR in Generate Map. numRooms>mapWisth*mapHeight");
     }
-    vector<vector<Room*>>* tempMap;
+    vector<vector<Room*>>* tempMap=new vector<vector<Room*>>;
     vector<Room*> tempRow;
     for(int x=0;x<mapWidth;x++){
         tempRow.push_back(nullptr);
