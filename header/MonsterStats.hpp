@@ -2,29 +2,29 @@
 #define MONSTERSTATS_HPP
 
 #include <string>
-using namespace std;
-
-class Character; 
+#include "Character.hpp"
 
 class MonsterStats {
 private:
-    string name;
+    std::string name;
     int health;
     int damage;
-    int xp;
+    int xpReward;
 
 public:
-    MonsterStats(string n, int h, int d, int x);
+    MonsterStats(const std::string& n, int h, int d, int x);
 
-    string getName() const;
+    // getters
+    const std::string& getName() const;
     int getHealth() const;
     int getDamage() const;
-    int getXP() const;
+    int getXPReward() const;
 
-    void attack(Character &player);
-    void takeDamage(int amount);
+    // battle functions
+    void takeDamage(int dmg);
     bool isDead() const;
-    void die(Character &player);
+    void attack(Character& player);
+    void die(Character& player);
 };
 
 #endif

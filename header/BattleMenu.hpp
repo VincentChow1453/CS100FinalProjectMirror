@@ -3,18 +3,17 @@
 
 #include "MonsterStats.hpp"
 
-class Character; 
-
 class BattleMenu {
 private:
     int selection_choice;
-    MonsterStats &monster;
+    MonsterStats monster;
 
 public:
-    BattleMenu(MonsterStats &m);
+    BattleMenu(const MonsterStats& m);
+
     void displayMenu() const;
-    void chooseOption(int selection);
-    void run(Character &player);
+    void chooseOption(int selection_choice);
+    void run();
 };
 
 #endif
