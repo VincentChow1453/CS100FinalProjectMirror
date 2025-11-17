@@ -57,10 +57,17 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/csmajs/cluo034/final-project-cool-team
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/csmajs/cluo034/final-project-cool-team/build
+=======
+CMAKE_SOURCE_DIR = /class/classes/dhe031/final-project-cool-team
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /class/classes/dhe031/final-project-cool-team/build
+>>>>>>> dhe031_CharClass
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -85,11 +92,64 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+<<<<<<< HEAD
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/cluo034/final-project-cool-team/build/CMakeFiles /home/csmajs/cluo034/final-project-cool-team/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/cluo034/final-project-cool-team/build/CMakeFiles 0
+=======
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"gmock\" \"gtest\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# The main all target
+all: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /class/classes/dhe031/final-project-cool-team/build/CMakeFiles /class/classes/dhe031/final-project-cool-team/build//CMakeFiles/progress.marks
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /class/classes/dhe031/final-project-cool-team/build/CMakeFiles 0
+>>>>>>> dhe031_CharClass
 .PHONY : all
 
 # The main clean target
@@ -117,6 +177,7 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+<<<<<<< HEAD
 # Target rules for targets named rpg_game
 
 # Build rule for target.
@@ -320,6 +381,119 @@ src/shopRoom.s: src/shopRoom.cpp.s
 src/shopRoom.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rpg_game.dir/build.make CMakeFiles/rpg_game.dir/src/shopRoom.cpp.s
 .PHONY : src/shopRoom.cpp.s
+=======
+# Target rules for targets named runAllTests
+
+# Build rule for target.
+runAllTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 runAllTests
+.PHONY : runAllTests
+
+# fast build rule for target.
+runAllTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runAllTests.dir/build.make CMakeFiles/runAllTests.dir/build
+.PHONY : runAllTests/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock.dir/build.make googletest/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f googletest/googlemock/CMakeFiles/gmock_main.dir/build.make googletest/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest.dir/build.make googletest/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f googletest/googletest/CMakeFiles/gtest_main.dir/build.make googletest/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
+src/characterClass.o: src/characterClass.cpp.o
+.PHONY : src/characterClass.o
+
+# target to build an object file
+src/characterClass.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runAllTests.dir/build.make CMakeFiles/runAllTests.dir/src/characterClass.cpp.o
+.PHONY : src/characterClass.cpp.o
+
+src/characterClass.i: src/characterClass.cpp.i
+.PHONY : src/characterClass.i
+
+# target to preprocess a source file
+src/characterClass.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runAllTests.dir/build.make CMakeFiles/runAllTests.dir/src/characterClass.cpp.i
+.PHONY : src/characterClass.cpp.i
+
+src/characterClass.s: src/characterClass.cpp.s
+.PHONY : src/characterClass.s
+
+# target to generate assembly for a file
+src/characterClass.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runAllTests.dir/build.make CMakeFiles/runAllTests.dir/src/characterClass.cpp.s
+.PHONY : src/characterClass.cpp.s
+
+test/testCharacterClass.o: test/testCharacterClass.cpp.o
+.PHONY : test/testCharacterClass.o
+
+# target to build an object file
+test/testCharacterClass.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runAllTests.dir/build.make CMakeFiles/runAllTests.dir/test/testCharacterClass.cpp.o
+.PHONY : test/testCharacterClass.cpp.o
+
+test/testCharacterClass.i: test/testCharacterClass.cpp.i
+.PHONY : test/testCharacterClass.i
+
+# target to preprocess a source file
+test/testCharacterClass.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runAllTests.dir/build.make CMakeFiles/runAllTests.dir/test/testCharacterClass.cpp.i
+.PHONY : test/testCharacterClass.cpp.i
+
+test/testCharacterClass.s: test/testCharacterClass.cpp.s
+.PHONY : test/testCharacterClass.s
+
+# target to generate assembly for a file
+test/testCharacterClass.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runAllTests.dir/build.make CMakeFiles/runAllTests.dir/test/testCharacterClass.cpp.s
+.PHONY : test/testCharacterClass.cpp.s
+>>>>>>> dhe031_CharClass
 
 # Help Target
 help:
@@ -328,6 +502,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+<<<<<<< HEAD
 	@echo "... rebuild_cache"
 	@echo "... rpg_game"
 	@echo "... src/Room.o"
@@ -354,6 +529,24 @@ help:
 	@echo "... src/shopRoom.o"
 	@echo "... src/shopRoom.i"
 	@echo "... src/shopRoom.s"
+=======
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
+	@echo "... rebuild_cache"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
+	@echo "... runAllTests"
+	@echo "... src/characterClass.o"
+	@echo "... src/characterClass.i"
+	@echo "... src/characterClass.s"
+	@echo "... test/testCharacterClass.o"
+	@echo "... test/testCharacterClass.i"
+	@echo "... test/testCharacterClass.s"
+>>>>>>> dhe031_CharClass
 .PHONY : help
 
 

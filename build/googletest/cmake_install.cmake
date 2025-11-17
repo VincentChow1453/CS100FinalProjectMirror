@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Install script for directory: /home/csmajs/cluo034/final-project-cool-team
-=======
-# Install script for directory: /class/classes/dhe031/final-project-cool-team
->>>>>>> dhe031_CharClass
+# Install script for directory: /class/classes/dhe031/final-project-cool-team/googletest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -46,26 +42,8 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-<<<<<<< HEAD
-=======
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/class/classes/dhe031/final-project-cool-team/build/googletest/cmake_install.cmake")
-
+  # Include the install script for the subdirectory.
+  include("/class/classes/dhe031/final-project-cool-team/build/googletest/googlemock/cmake_install.cmake")
 endif()
 
->>>>>>> dhe031_CharClass
-if(CMAKE_INSTALL_COMPONENT)
-  set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
-else()
-  set(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
-endif()
-
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-<<<<<<< HEAD
-file(WRITE "/home/csmajs/cluo034/final-project-cool-team/build/${CMAKE_INSTALL_MANIFEST}"
-=======
-file(WRITE "/class/classes/dhe031/final-project-cool-team/build/${CMAKE_INSTALL_MANIFEST}"
->>>>>>> dhe031_CharClass
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
