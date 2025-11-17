@@ -1,5 +1,5 @@
 #include "MonsterStats.hpp"
-// Constructor initializing monster attributes
+// Constructor to initialize monster attributes
 MonsterStats::MonsterStats(const std::string& n, int h, int d, int x)
     : name(n), health(h), damage(d), xpReward(x) {}
 // Getters for monster attributes

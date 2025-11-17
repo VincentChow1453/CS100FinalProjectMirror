@@ -1,13 +1,13 @@
 #pragma once
 #include <string>
 #include "Character.hpp"
-// MonsterStats represents the stats and behavior of a monster in the game
+// MonsterStats holds the stats and behaviors of a monster in the game
 class MonsterStats {
 private:
-    const std::string name;
+    std::string name;
     int health;
-    const int damage;
-    const int xpReward;
+    int damage;
+    int xpReward;
 // Additional attributes can be added as needed
 public:
     MonsterStats(const std::string& n, int h, int d, int x);
