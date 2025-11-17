@@ -4,10 +4,10 @@
 // MonsterStats represents the stats and behavior of a monster in the game
 class MonsterStats {
 private:
-    std::string name;
+    const std::string name;
     int health;
-    int damage;
-    int xpReward;
+    const int damage;
+    const int xpReward;
 // Additional attributes can be added as needed
 public:
     MonsterStats(const std::string& n, int h, int d, int x);
