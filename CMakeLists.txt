@@ -1,4 +1,11 @@
-PROJECT(CharacterProject)
+cmake_minimum_required(VERSION 3.10)
+project(BattleGame)
+
+include_directories(${CMAKE_SOURCE_DIR}/test/googletest/googletest/include)
+include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/header)
+
+add_subdirectory(test/googletest)
 
 SET(CMAKE_CXX_STANDARD 17)
 
@@ -8,7 +15,6 @@ INCLUDE_DIRECTORIES(
     googletest/googlemock/include
 )
 
-add_subdirectory(googletest)
 
 ADD_EXECUTABLE(runCharTests
     test/testCharacterClass.cpp
@@ -22,11 +28,10 @@ TARGET_LINK_LIBRARIES(runCharTests
 )
 
 ADD_EXECUTABLE(runMapTests
-    test/test.cpp
-    src/DungeonMap.cpp
-    src/MapGenerator.cpp
-    src/MapNavigationMenu.cpp
-    src/Room.cpp
+    test/testMap.cpp
+    src/MonsterStats.cpp
+    src/BattleRoom.cpp
+    src/BattleMenu.cpp
 )
 target_link_libraries(runMapTests gmock gtest gtest_main)
 
