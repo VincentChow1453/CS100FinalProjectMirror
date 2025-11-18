@@ -1,17 +1,15 @@
 cmake_install.cmake_install
+cmake_install.cmake
+Makefile
+CMakeFiles/
+CMakeCache.txt
 rpg_game
 shopTest
 ScreenLayout.cpp
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
-lib/
-<<<<<<< HEAD
-bin/
-build
-=======
-runAllTests
 runTerminalTests
 build/
->>>>>>> origin/jlee1833/monster
+lib/
+
+test/runMapTests
+test/runCharTests
+test/runMonsterTests

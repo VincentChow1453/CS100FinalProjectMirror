@@ -20,21 +20,32 @@ ADD_EXECUTABLE(runCharTests
     test/testCharacterClass.cpp
     src/characterClass.cpp
 )
-
-TARGET_LINK_LIBRARIES(runCharTests
-    gtest
-    gmock
-    gtest_main
+target_link_libraries(runCharTests gmock gtest gtest_main)
+SET_TARGET_PROPERTIES(runCharTests PROPERTIES
+RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_EXECUTABLE(runMapTests
-    test/testMap.cpp
+ADD_EXECUTABLE(runMonsterTests
+    test/testMonster.cpp
     src/MonsterStats.cpp
     src/BattleRoom.cpp
     src/BattleMenu.cpp
 )
-target_link_libraries(runMapTests gmock gtest gtest_main)
-
-SET_TARGET_PROPERTIES(runAllTests PROPERTIES
+target_link_libraries(runMonsterTests gmock gtest gtest_main)
+SET_TARGET_PROPERTIES(runMonsterTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
+
+ADD_EXECUTABLE(runMapTests
+    test/testMap.cpp
+    src/Room.cpp
+    src/DungeonMap.cpp
+    src/MapGenerator.cpp
+    src/MapNavigationMenu
+)
+target_link_libraries(runMapTests gmock gtest gtest_main)
+SET_TARGET_PROPERTIES(runMapTests PROPERTIES
+RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
+)
+
+

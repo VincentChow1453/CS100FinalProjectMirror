@@ -2,6 +2,7 @@
 #include "../header/MonsterStats.hpp"
 #include "../header/BattleRoom.hpp"
 #include "../header/BattleMenu.hpp"
+#include <gtest/gtest.h>
 
 // MonsterStats Tests 
 TEST(MonsterStatsTest, BasicInitialization) {
@@ -11,7 +12,6 @@ TEST(MonsterStatsTest, BasicInitialization) {
     EXPECT_EQ(goblin.getHealth(), 30);
     EXPECT_EQ(goblin.getDamage(), 5);
     EXPECT_EQ(goblin.getXPReward(), 10);
->>>>>>> origin/jlee1833/monster
 }
 
 TEST(MonsterStatsTest, AttackAndDie) {
