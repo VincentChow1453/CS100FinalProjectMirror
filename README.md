@@ -125,7 +125,20 @@
  > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
  
  > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
+ > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.<br><br>
+ Phase III Diagram:<br>
+ [CS100 Cool Team User Class Diagram Phase III.pdf](https://github.com/user-attachments/files/23594594/CS100.Cool.Team.User.Class.Diagram.Phase.III.pdf)<br><br>
+ For the EventEncounter and Item classes, we applied the Open-Closed Principle. We did this by getting rid of the int even_id and int item_id variables, which decided which event/item the object was, and instead made every specific event/item a subclass of the original event/item class. This makes it much easier to add on new events/items if we so desired.<br>
+ For the DungeonMap class, we heavily applied the SRP. We did this by splitting off the DisplayMap function to its own class, and when we added new functions, we put them in their own class called RoomGenerator. This helps us right better code by keeping things more organized and making changes less likely to break our code.<br>
+ Applied Open-Closed Principle (OCP) to our create character functionality. Base character class only applies basic values and more specific classes can be created off of that, e.g. "Mage" can inherit high mana but low strength. With setters that can modify base stats if the class is to be changed.<br>
+We applied the Single Responsibility Principle (SRP) to the shop classes. We changed the design so that BoundaryShopMenu only handles menu UI, while Shop handles the buying/selling logic and Inventory handles displaying items. Seperating these classes made the code easier to maintain and just work with in general. Most importantly, it allows us to modify one part of the system without breaking others.<br>
+Applied Single Responsibility Principle to our character creation functionality. Inventory was going to be part of character but we realized it should be its own functionality because it is being used in other places. So inventory was moved to being its own class for more organized coding experience.<br>
+For the EventMenu, BattleMenu, and EncounterMenu classes, we utilized the ISP. We turned these menus into subclasses of the broader EncounterMenu class, and we oonly implemented the functions that were common to all 3 menus in the EncounterMenu class. This improves our coding by allowing us to minimize duplicate code while not having any vestigial code.<br>
+ Applied SRP to our battle system. MonsterStats only handles monster stats and actions. BattleRoom handles encounter triggers. BattleMenu handles battle UI and player choices. Separating responsibilities makes code easier to maintain and modify.<br>
+Applied OCP to MonsterStats and BattleMenu. New monsters or menu actions can be added by extending classes without modifying existing code. This allows adding features while keeping existing functionality safe.<br>
+Applied LSP in the battle system. Any subclass of MonsterStats can be used in BattleRoom and BattleMenu without breaking behavior, ensuring consistent substitution.<br>
+Applied ISP to battle menus. BattleMenu only depends on the functions it uses, and other menus implement only the common interface. This reduces unnecessary code and improves clarity.<br>
+Applied DIP to BattleRoom and BattleMenu. They depend on abstractions of MonsterStats rather than concrete implementations, reducing coupling and making the system more flexible.<br>
  
  > BEFORE the meeting you should do the following:
  > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
