@@ -11,8 +11,8 @@ private:
     Shop roomShop;
 
 public:
-    ShopRoom() {}               // optional constructor
-    void TriggerEncounter(Player& player) override;
+    ShopRoom() {}
+    void TriggerEncounter(Player& player); 
 };
 
-#endif // SHOPROOM_H
+#endif

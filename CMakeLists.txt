@@ -48,4 +48,17 @@ SET_TARGET_PROPERTIES(runMapTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
+ADD_EXECUTABLE(runShopTests
+    test/testShop.cpp
+    src/shop.cpp
+    src/shopRoom.cpp
+    src/player.cpp
+    src/inventory.cpp
+    src/itemStub.cpp
+    src/boundaryShopMenu.cpp
+)
+target_link_libraries(runShopTests gmock gtest gtest_main)
+SET_TARGET_PROPERTIES(runShopTests PROPERTIES
+RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
+)
 
