@@ -127,7 +127,8 @@
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.<br><br>
  Phase III Diagram:<br>
- [CS100 Cool Team User Class Diagram Phase III.pdf](https://github.com/user-attachments/files/23594594/CS100.Cool.Team.User.Class.Diagram.Phase.III.pdf)<br><br>
+ [CS100 Cool Team User Class Diagram Phase III (1).pdf](https://github.com/user-attachments/files/23685619/CS100.Cool.Team.User.Class.Diagram.Phase.III.1.pdf)<br><br>
+
 > * For the EventEncounter and Item classes, we applied the Open-Closed Principle. We did this by getting rid of the int even_id and int item_id variables, which decided which event/item the object was, and instead made every specific event/item a subclass of the original event/item class. This makes it much easier to add on new events/items if we so desired.<br>
 > * For the DungeonMap class, we heavily applied the SRP. We did this by splitting off the DisplayMap function to its own class, and when we added new functions, we put them in their own class called RoomGenerator. This helps us right better code by keeping things more organized and making changes less likely to break our code.<br>
 > * Applied Open-Closed Principle (OCP) to our create character functionality. Base character class only applies basic values and more specific classes can be created off of that, e.g. "Mage" can inherit high mana but low strength. With setters that can modify base stats if the class is to be changed.<br>
