@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 void EncounterMenu::startEncounter(Room *newRoom){
-    thisRoom=newRoom;
+    currRoom=newRoom;
     displayMenu();
     int option;
     cin>>option;
