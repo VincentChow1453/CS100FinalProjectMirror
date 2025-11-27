@@ -139,7 +139,7 @@ TEST(DungeonMapMenu, testSuccessfullLeft){
     //[ ][ ][ ][ ][ ]
     //[H][X][X][X][X]
     string output = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(output, "[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[H][X][X][X][X]\nRoom stub\n");
+    ASSERT_EQ(output, "[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[ ][ ][ ][ ][ ]\n[H][X][X][X][X]\nEncounterMenu DisplayMenu() stub\nEncounterMenu ChooseOption(1) stub\nRoom TriggerRoom() stub\n");
 }
 TEST(DungeonMapMenu, testLeftOutOfBounds){
     testing::internal::CaptureStdout();
@@ -251,7 +251,7 @@ TEST(DungeonMapMenu, testRightSuccessful){
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
     string output = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(output, "[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n[X][X][X][H][X]\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\nRoom stub\n");
+    ASSERT_EQ(output, "[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n[X][X][X][H][X]\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\nEncounterMenu DisplayMenu() stub\nEncounterMenu ChooseOption(1) stub\nRoom TriggerRoom() stub\n");
 }
 TEST(DungeonMapMenu, testRightOutOfBounds){
     testing::internal::CaptureStdout();
@@ -371,7 +371,7 @@ TEST(DungeonMapMenu, testUpSuccessful){
     //[ ][ ][X][ ][ ]
     //[ ][ ][X][ ][ ]
     string output = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(output, "[ ][ ][X][ ][ ]\n[ ][ ][H][ ][ ]\n[X][X][X][X][X]\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\nRoom stub\n");
+    ASSERT_EQ(output, "[ ][ ][X][ ][ ]\n[ ][ ][H][ ][ ]\n[X][X][X][X][X]\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\nEncounterMenu DisplayMenu() stub\nEncounterMenu ChooseOption(1) stub\nRoom TriggerRoom() stub\n");
 }
 TEST(DungeonMapMenu, testUpOutOfBounds){
     testing::internal::CaptureStdout();
@@ -491,7 +491,7 @@ TEST(DungeonMapMenu, testDownSuccessful){
     //[ ][ ][H][ ][ ]
     //[ ][ ][X][ ][ ]
     string output = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(output, "[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n[X][X][X][X][X]\n[ ][ ][H][ ][ ]\n[ ][ ][X][ ][ ]\nRoom stub\n");
+    ASSERT_EQ(output, "[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n[X][X][X][X][X]\n[ ][ ][H][ ][ ]\n[ ][ ][X][ ][ ]\nEncounterMenu DisplayMenu() stub\nEncounterMenu ChooseOption(1) stub\nRoom TriggerRoom() stub\n");
 }
 TEST(DungeonMapMenu, testDownOutOfBounds){
     testing::internal::CaptureStdout();

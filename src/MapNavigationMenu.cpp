@@ -16,7 +16,7 @@ void MapNavigationMenu::GoLeft(){
     }
     map.setPlayerCoords(map.getPlayerX()-1,map.getPlayerY());
     map.DisplayMap();
-    map.getPlayerRoom()->TriggerEncounter();
+    map.getPlayerRoom()->TriggerRoom();
 }
 void MapNavigationMenu::GoRight(){
     if(map.getPlayerX()==map.getWidth()-1||map.mapMatrix->at(map.getPlayerY()).at(map.getPlayerX()+1)==nullptr){
@@ -26,7 +26,7 @@ void MapNavigationMenu::GoRight(){
     }
     map.setPlayerCoords(map.getPlayerX()+1,map.getPlayerY());
     map.DisplayMap();
-    map.getPlayerRoom()->TriggerEncounter();
+    map.getPlayerRoom()->TriggerRoom();
 }
 void MapNavigationMenu::GoUp(){
     if(map.getPlayerY()==map.getHeight()-1||map.mapMatrix->at(map.getPlayerY()+1).at(map.getPlayerX())==nullptr){
@@ -36,7 +36,7 @@ void MapNavigationMenu::GoUp(){
     }
     map.setPlayerCoords(map.getPlayerX(),map.getPlayerY()+1);
     map.DisplayMap();
-    map.getPlayerRoom()->TriggerEncounter();
+    map.getPlayerRoom()->TriggerRoom();
 }
 void MapNavigationMenu::GoDown(){
     if(map.getPlayerY()==0||map.mapMatrix->at(map.getPlayerY()-1).at(map.getPlayerX())==nullptr){
@@ -46,7 +46,7 @@ void MapNavigationMenu::GoDown(){
     }
     map.setPlayerCoords(map.getPlayerX(),map.getPlayerY()-1);
     map.DisplayMap();
-    map.getPlayerRoom()->TriggerEncounter();
+    map.getPlayerRoom()->TriggerRoom();
 }
 DungeonMap* MapNavigationMenu::getMap(){
     return &map;
