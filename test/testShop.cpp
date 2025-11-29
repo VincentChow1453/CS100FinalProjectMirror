@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "itemStub.hpp"
+#include "ItemClass.hpp"
 #include "inventory.hpp"
 #include "player.hpp"
 #include "shop.hpp"
