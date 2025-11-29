@@ -3,7 +3,7 @@
 
 using namespace std;
 #include <vector>
-#include "itemStub.hpp"
+#include "ItemClass.hpp"
 
 class Inventory {
 private:

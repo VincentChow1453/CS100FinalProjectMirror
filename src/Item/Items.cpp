@@ -10,3 +10,12 @@ vector<Item> items = {
     Item("Bandage", 10),
     Item("Health Potion", 10),
 };
+
+Item* getItemByName(const std::string& name) {
+    for (int i = 0; i < items.size(); i++) {
+        if (items[i].name == name) {
+            return &items[i];
+        }
+    }
+    return nullptr;
+}

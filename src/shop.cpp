@@ -2,6 +2,37 @@
 #include <iostream>
 using namespace std;
 
+Shop::Shop() {
+    addItem("Wooden Sword");
+    addItem("Stone Sword");
+    addItem("Metal Sword");
+    addItem("Light Armor");
+    addItem("Heavy Armor");
+    addItem("Bandage");
+    addItem("Health Potion");
+}
+
+void Shop::addItem(string itemName){
+    Item* item = getItemByName(itemName);
+
+    if (item != nullptr){
+        catalogue.push_back(*item);
+    }
+    else {
+        cout << "ITEM: " << itemName << " NOT FOUND!" << endl;
+    }
+}
+
+// displays shoplist
+void Shop::displayItems() {
+    cout << "\n===== SHOP ITEM LIST =====\n";
+    for (unsigned int i = 0; i < catalogue.size(); i++){
+        cout << i << ": " << catalogue[i].name << " (" << catalogue[i].price << ") gold\n";
+    }
+
+    cout << "===========================\n";
+}
+
 // TEMP BUY — Just prints what was chosen
 void Shop::buyItem(int option) {
     cout << "[TEMP] buyItem() called with option = " << option << endl;
@@ -15,13 +46,4 @@ void Shop::sellItem(int option, Player& player) {
 
     // Optional: show player gold
     cout << "[TEMP] Player gold: " << player.getGold() << endl;
-}
-
-// TEMP DISPLAY — Hard-coded fake shop items
-void Shop::displayItems() {
-    cout << "\n===== TEMP SHOP ITEM LIST =====\n";
-    cout << "0: Potion (10 gold)\n";
-    cout << "1: Sword  (50 gold)\n";
-    cout << "2: Shield (40 gold)\n";
-    cout << "[TEMP] Real shop inventory not implemented yet.\n";
 }

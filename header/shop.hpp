@@ -3,7 +3,8 @@
 
 
 #include <vector>
-#include "itemStub.hpp"
+#include "ItemClass.hpp"
+#include "Items.hpp"
 #include "player.hpp"
 
 class Shop {
@@ -11,7 +12,9 @@ private:
     vector<Item> catalogue;
 
 public:
-    void buyItem(int option);
+    Shop();
+    void addItem(string item);
+    void buyItem(int index);
     void sellItem(int index, Player& player);
     void displayItems();
 };
