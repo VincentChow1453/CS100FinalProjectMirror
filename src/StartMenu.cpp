@@ -1,4 +1,5 @@
-#include "StartMenu.hpp"
+#include "../header/StartMenu.hpp"
+#include "../header/MapNavigationMenu.hpp"
 #include <iostream>
 using namespace std;
 void StartMenu::LoadGameOption(){
@@ -9,4 +10,5 @@ void StartMenu::SettingsOption(){
 }
 void StartMenu::StartNewGameOption(){
     cout<<"StartNewGameOption() stub"<<endl;
+    
 }
