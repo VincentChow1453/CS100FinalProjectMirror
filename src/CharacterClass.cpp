@@ -1,4 +1,4 @@
-#include "characterClass.h"
+#include "CharacterClass.h"
 #include <iostream>
 #include <stdexcept>
 
