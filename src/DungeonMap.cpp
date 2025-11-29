@@ -19,22 +19,22 @@ DungeonMap::~DungeonMap(){
     }
 
 }
-void DungeonMap::DisplayMap() const{
-    for(int y=mapMatrix->size()-1;y>=0;y--){//We start from y=mapMatrix.size() because we want the largest y-value to be printed first, at the top.
-        for(int x=0;x<mapMatrix->at(y).size();x++){
-            if(mapMatrix->at(y).at(x)==nullptr){
-                cout<<"[ ]";
-            }
-            else if(x==playerX && y==playerY){
-                cout<<"[H]";
-            }
-            else{
-                cout<<"[X]";
-            }
-        }
-        cout<<endl;
-    }
-}
+// void DungeonMap::DisplayMap() const{
+//     for(int y=mapMatrix->size()-1;y>=0;y--){//We start from y=mapMatrix.size() because we want the largest y-value to be printed first, at the top.
+//         for(int x=0;x<mapMatrix->at(y).size();x++){
+//             if(mapMatrix->at(y).at(x)==nullptr){
+//                 cout<<"[ ]";
+//             }
+//             else if(x==playerX && y==playerY){
+//                 cout<<"[H]";
+//             }
+//             else{
+//                 cout<<"[X]";
+//             }
+//         }
+//         cout<<endl;
+//     }
+// }
 int DungeonMap::getPlayerX() const{
     return playerX;
 }
@@ -54,6 +54,13 @@ void DungeonMap::setPlayerCoords(const int x,const int y){
 void DungeonMap::setMapDimensions(const int newWidth,const int newHeight){
     height=newHeight;
     width=newWidth;
+}
+vector<vector<Room*>>* DungeonMap::getMap() const{
+    return mapMatrix;
+}
+void DungeonMap::setMap(vector<vector<Room*>>* newMapPtr){
+    delete mapMatrix;
+    mapMatrix=newMapPtr;
 }
 Room* DungeonMap::getRoom(const int x, const int y){
     if(x<0||x>=width||y<0||y>=height){
