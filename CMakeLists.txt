@@ -63,3 +63,15 @@ SET_TARGET_PROPERTIES(runShopTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
+ADD_EXECUTABLE(runMainDriver
+    test/mainDriver.cpp
+    src/MapNavigationMenu.cpp
+    src/DungeonMap.cpp
+    src/MapGenerator.cpp
+    src/EncounterMenu.cpp
+    src/Room.cpp
+    
+)
+SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
+RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
+)

@@ -1,6 +1,5 @@
 #pragma once
 #include "./Room.hpp"
-
 class EncounterMenu{
     private:
         Room* currRoom;
