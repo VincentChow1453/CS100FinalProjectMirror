@@ -43,6 +43,7 @@ ADD_EXECUTABLE(runMapTests
     src/MapGenerator.cpp
     src/MapNavigationMenu
     src/EncounterMenu.cpp
+    src/MapDisplayer.cpp
 )
 target_link_libraries(runMapTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runMapTests PROPERTIES
