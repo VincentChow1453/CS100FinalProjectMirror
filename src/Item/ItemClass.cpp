@@ -1,4 +1,4 @@
-#include "itemStub.hpp"
+#include "ItemClass.hpp"
 
 Item::Item(){
     name = "Item";

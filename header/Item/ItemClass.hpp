@@ -1,5 +1,5 @@
-#ifndef ITEM_HPP
-#define ITEM_HPP
+#ifndef ITEMCLASS_HPP
+#define ITEMCLASS_HPP
 
 #include <iostream>
 using namespace std;
