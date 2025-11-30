@@ -1,5 +1,7 @@
 #include "ItemClass.hpp"
 
+
+// Constructors
 Item::Item(){
     name = "Item";
     price = 0;

@@ -1,6 +1,6 @@
 #include "shopRoom.hpp"
 
-void ShopRoom::TriggerEncounter(Player& player) {
+void ShopRoom::TriggerEncounter(CharacterClass& player) {
     BoundaryShopMenu menu;
     menu.checkShop(roomShop, player);
 }

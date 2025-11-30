@@ -8,6 +8,8 @@ using namespace std;
 
 // Global array of hard-coded items
 extern vector<Item> items;
+
+// Helper function to ID items in other functions like buy and sell
 Item* getItemByName(const string& name);
 
 

@@ -3,17 +3,17 @@
 
 #include <iostream>
 #include "shop.hpp"
-#include "player.hpp"
+#include "characterClass.h"
 
 class BoundaryShopMenu {
 private:
     int selectionChoice;
 
 public:
-    BoundaryShopMenu(): selectionChoice(0) {}
+    BoundaryShopMenu() : selectionChoice(0) {}
 
-    void checkShop(Shop& shop, Player& player);
-    void checkInventory(Player& player);
+    void checkShop(Shop& shop, CharacterClass& player);
+    void checkInventory(CharacterClass& player);
 };
 
 #endif
