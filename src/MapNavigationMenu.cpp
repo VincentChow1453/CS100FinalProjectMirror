@@ -3,17 +3,22 @@
 #include <iostream>
 using namespace std;
 MapNavigationMenu::MapNavigationMenu(){}
-MapNavigationMenu::displayMenu(){
+MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight){
+    map.setMap(generator.GenerateMap(numRooms, newWidth, newHeight,&map));
+    map.setMapDimensions(newWidth, newHeight);
+}
+void MapNavigationMenu::displayMenu()const{
     cout<<"Here is the current map of the dungeon."<<endl;
     cout<<"Key: [ ]=Empty space; [X]=Room; [H]=You are Here."<<endl;
-    map.DisplayMap();
+    MapDisplayer::DisplayMap(&map);
     cout<<"Here are the actions you may take"<<endl;
     cout<<"1. Go Up."<<endl;
     cout<<"2. Go Left."<<endl;
     cout<<"3. Go Down."<<endl;
     cout<<"4. Go Right."<<endl;
+    cout<<"5. Exit Game."<<endl;
 }
-MapNavigationMenu::chooseOption(const int option){
+void MapNavigationMenu::chooseOption(const int option){
     if(option==1){
         GoUp();
     }
@@ -27,22 +32,22 @@ MapNavigationMenu::chooseOption(const int option){
         GoRight();
     }
     else{
-        throw runtime_error("Invalid MapNavigationMenu input. Input must be 1234 or wasd.");
+        throw runtime_error("Invalid MapNavigationMenu input. Input must be 1234.");
     }
 }
-MapNavigationMenu::startMenu(){
+void MapNavigationMenu::startMenu(){
     displayMenu();
     int playerChoice;
     cin>>playerChoice;
     if(!cin>>playerChoice){
         throw runtime_error("Inalid playerChoice in MapNavigationmenu::startMenu().");
     }
+    if(playerChoice==5){
+        return;
+    }
     chooseOption(playerChoice);
+    cout<<endl;
     startMenu();
-}
-MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight){
-    map.setMap(generator.GenerateMap(numRooms, newWidth, newHeight,&map));
-    map.setMapDimensions(newWidth, newHeight);
 }
 
 void MapNavigationMenu::GoLeft(){

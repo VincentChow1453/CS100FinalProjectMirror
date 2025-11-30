@@ -1,7 +1,7 @@
 #include "../header/MapDisplayer.hpp" 
 #include <iostream>
 using namespace std;
-void MapDisplayer::DisplayMap(DungeonMap* map){
+void MapDisplayer::DisplayMap(const DungeonMap* map){
     vector<vector<Room*>>* mapMatrix=map->getMap();
     int playerX=map->getPlayerX();
     int playerY=map->getPlayerY();

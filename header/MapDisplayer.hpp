@@ -1,5 +1,5 @@
 #include "DungeonMap.hpp"
 class MapDisplayer{
     public:
-        static void DisplayMap(DungeonMap* map);
+        static void DisplayMap(const DungeonMap* map);
 };

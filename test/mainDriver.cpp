@@ -9,7 +9,7 @@ int main(){
     StartMenu::OpenMenu();
     CharacterSelectMenu::selectCharacter();
     MapNavigationMenu mapMenu(10,5,5);
-    cout<<endl<<"Now we will enter the dungeon. Here is the map of the first floor"<<endl;
-    MapDisplayer::DisplayMap(mapMenu.getMap());
+    cout<<endl<<"Now we will enter the dungeon."<<endl;
+    mapMenu.startMenu();
 
 }
