@@ -6,8 +6,8 @@
 using namespace std;
 class CharacterSelectMenu{
     private:
-        static void displayClasses() const;
-        static CharacterClass selectCharacter(const int option);
+        static void displayClasses();
+        static CharacterClass selectCharacterHelper();
     public: 
         static CharacterClass selectCharacter();
 

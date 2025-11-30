@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../header/characterClass.h"
+#include "../header/CharacterClass.h"
 
 //to run: cd build, cmake .., make, cd.., .test/runAllTests
 

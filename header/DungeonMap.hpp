@@ -1,7 +1,6 @@
 #ifndef DUNGEONMAP_HPP
 #define DUNGEONMAP_HPP
 #include "Room.hpp"
-#include "MapGenerator.hpp"
 #include <vector>
 using std::vector;
 class DungeonMap {
@@ -17,7 +16,6 @@ class DungeonMap {
         void setMap(vector<vector<Room*>>* newMapPtr);
         Room* getRoom(const int x, const int y);
         Room* getPlayerRoom();
-        //void DisplayMap() const;
         int getPlayerX() const;
         int getPlayerY() const;
         int getWidth() const;

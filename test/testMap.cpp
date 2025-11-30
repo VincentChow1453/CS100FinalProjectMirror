@@ -580,7 +580,7 @@ TEST(MapGenerator, testNumRooms){
     int newMapWidth=10;
     int newMapHeight=10;
     DungeonMap map;
-    map.setMap(generator.GenerateMap(numRooms, newMapWidth, newMapHeight));
+    map.setMap(generator.GenerateMap(numRooms, newMapWidth, newMapHeight,&map));
     map.setMapDimensions(newMapHeight,newMapWidth);
     int countedRooms=0;
     for(int y=0;y<map.getHeight();y++){

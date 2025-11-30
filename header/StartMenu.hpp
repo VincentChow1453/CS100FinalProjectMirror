@@ -1,8 +1,10 @@
 #pragma once
-class{
+class StartMenu{
     private:
+        static void LoadGameOption();
+        static void SettingsOption();
+        static void StartNewGameOption();
     public:
-        void LoadGameOption();
-        void SettingsOption();
-        void StartNewGameOption();
+        static void OpenMenu();
+
 };

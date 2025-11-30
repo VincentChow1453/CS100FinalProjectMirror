@@ -5,7 +5,7 @@ using namespace std;
 MapNavigationMenu::MapNavigationMenu(){
 }
 MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight){
-    map.setMap(generator.GenerateMap(numRooms, newWidth, newHeight));
+    map.setMap(generator.GenerateMap(numRooms, newWidth, newHeight,&map));
     map.setMapDimensions(newWidth, newHeight);
     //I also need a way to find the player coordinates
 }

@@ -1,12 +1,15 @@
 #include <iostream>
-#include "../header/MapNavigationMenu.hpp"
+#include "StartMenu.hpp"
+#include "CharacterSelectMenu.hpp"
+#include "MapNavigationMenu.hpp"
+#include "MapDisplayer.hpp"
 using namespace std;
 
 int main(){
-    cout<<"StartMenu goes here"<<endl;
-    cout<<"CharacterSelectMenu goes here"<<endl;    
-    MapNavigationMenu mapMenu(10,10,10);
-    mapMenu.getMap()->DisplayMap();
-    mapMenu.
-    return 0;
+    StartMenu::OpenMenu();
+    CharacterSelectMenu::selectCharacter();
+    MapNavigationMenu mapMenu(10,5,5);
+    cout<<endl<<"Now we will enter the dungeon. Here is the map of the first floor"<<endl;
+    MapDisplayer::DisplayMap(mapMenu.getMap());
+
 }

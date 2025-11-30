@@ -18,7 +18,7 @@ INCLUDE_DIRECTORIES(
 
 ADD_EXECUTABLE(runCharTests
     test/testCharacterClass.cpp
-    src/characterClass.cpp
+    src/CharacterClass.cpp
 )
 target_link_libraries(runCharTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runCharTests PROPERTIES
@@ -65,12 +65,19 @@ RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
 ADD_EXECUTABLE(runMainDriver
-    test/mainDriver.cpp
+    test/mainDriver.cpp 
+    src/StartMenu.cpp
+    src/CharacterSelectMenu.cpp
+    src/CharacterClass.cpp
+    #src/MageClass.cpp
+    #src/WarriorClass.cpp
+    #src/AssassinClass.cpp
     src/MapNavigationMenu.cpp
+    src/MapDisplayer.cpp
     src/DungeonMap.cpp
+    src/Room.cpp
     src/MapGenerator.cpp
     src/EncounterMenu.cpp
-    src/Room.cpp
     
 )
 SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
