@@ -5,17 +5,18 @@
 #include <vector>
 #include "ItemClass.hpp"
 #include "Items.hpp"
-#include "player.hpp"
+#include "characterClass.h"
 
 class Shop {
 private:
-    vector<Item> catalogue;
+    vector<string> catalogue;
+
 
 public:
     Shop();
-    void addItem(string item);
-    void buyItem(int index);
-    void sellItem(int index, Player& player);
+    void addItem(const string& item);
+    void buyItem(int option, CharacterClass& player);
+    void sellItem(const string& itemName, CharacterClass& player);
     void displayItems();
 };
 

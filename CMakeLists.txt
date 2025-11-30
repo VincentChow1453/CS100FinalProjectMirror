@@ -55,7 +55,8 @@ ADD_EXECUTABLE(runShopTests
     src/shopRoom.cpp
     src/player.cpp
     src/inventory.cpp
-    src/itemStub.cpp
+    src/ItemClass.cpp
+    src/Items.cpp
     src/boundaryShopMenu.cpp
 )
 target_link_libraries(runShopTests gmock gtest gtest_main)

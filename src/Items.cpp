@@ -1,5 +1,5 @@
 #include "Items.hpp"
-
+#include "ItemClass.hpp"
 
 vector<Item> items = {
     Item("Wooden Sword", 10),
