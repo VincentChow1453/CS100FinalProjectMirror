@@ -13,3 +13,4 @@ lib/
 test/runMapTests
 test/runCharTests
 test/runMonsterTests
+test/runMainDriver
