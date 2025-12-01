@@ -156,10 +156,12 @@ void CharacterClass::useItem(const Item& item) {
     else if (item.type == "strength") {
         baseStrength += item.amount;
     }
-    
+
     else {
         cout << "Unknown item type: " << item.type << endl;
     }
+
+    removeItem(item.name);
 }
 
 
