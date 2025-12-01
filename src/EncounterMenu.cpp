@@ -7,7 +7,7 @@ void EncounterMenu::displayMenu() const{
 void EncounterMenu::chooseOption(int option){
     cout<<"EncounterMenu ChooseOption("<<option<<") stub"<<endl;
 }
-void EncounterMenu::startEncounter(Room *newRoom){
+void EncounterMenu::startEncounter(Room *newRoom, CharacterClass* player){
     currRoom=newRoom;
     displayMenu();
     int option;
