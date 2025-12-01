@@ -1,13 +1,14 @@
 #include <iostream>
 #include "CharacterSelectMenu.hpp"
 using namespace std;
+CharacterClass* CharacterSelectMenu::player=nullptr;
 void CharacterSelectMenu::displayClasses(){
     cout<<"Here are the classes available to you."<<endl;
     cout<<"1. Mage"<<endl;
     cout<<"2. Warrior"<<endl;
     cout<<"3. Assassin"<<endl;
 }
-CharacterClass CharacterSelectMenu::selectCharacterHelper(){
+CharacterClass* CharacterSelectMenu::selectCharacterHelper(){
     cout<<"Select a character by entering a number"<<endl;
     int playerChoice;
     cin>>playerChoice;
@@ -32,16 +33,17 @@ CharacterClass CharacterSelectMenu::selectCharacterHelper(){
     cin>>newName;
     if(playerChoice==1){
         cout<<"You have selected the wize Mage "<<newName<<"."<<endl;
-        return CharacterClass("Mage",newName,1,1,1,1,1);//replace this with mageClass
+        return new CharacterClass("Mage",newName,1,1,1,1,1);//replace this with mageClass
     }
     if(playerChoice==2){
         cout<<"You have selected the brave Warrior "<<newName<<"."<<endl;
-        return CharacterClass("Warrior",newName,1,1,1,1,1);//replace this with warriorClass
+        return new CharacterClass("Warrior",newName,1,1,1,1,1);//replace this with warriorClass
     }
     cout<<"You are the sneaky Assassin "<<newName<<"."<<endl;
-    return CharacterClass("Assassin",newName,1,1,1,1,1);//replace this with assassinClass
+    return new CharacterClass("Assassin",newName,1,1,1,1,1);//replace this with assassinClass
 }
-CharacterClass CharacterSelectMenu::selectCharacter(){
+void CharacterSelectMenu::selectCharacter(){
     displayClasses();
-    return selectCharacterHelper();
+    delete player;
+    player= selectCharacterHelper();
 }

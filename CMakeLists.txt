@@ -30,6 +30,9 @@ ADD_EXECUTABLE(runMonsterTests
     src/MonsterStats.cpp
     src/BattleRoom.cpp
     src/BattleMenu.cpp
+    src/CharacterClass.cpp
+    src/CharacterStats.cpp
+    src/CharacterStatsMenu.cpp
 )
 target_link_libraries(runMonsterTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runMonsterTests PROPERTIES

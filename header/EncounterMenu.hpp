@@ -1,4 +1,5 @@
 #pragma once
+#include "./CharacterClass.h"
 #include "./Room.hpp"
 class EncounterMenu{
     private:
