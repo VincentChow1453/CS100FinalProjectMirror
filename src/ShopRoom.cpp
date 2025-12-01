@@ -1,4 +1,4 @@
-#include "shopRoom.hpp"
+#include "ShopRoom.hpp"
 
 void ShopRoom::TriggerEncounter(CharacterClass& player) {
     BoundaryShopMenu menu;

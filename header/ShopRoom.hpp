@@ -2,9 +2,9 @@
 #define SHOPROOM_H
 
 #include "Room.hpp"
-#include "shop.hpp"
+#include "Shop.hpp"
 #include "ShopMenu.hpp"
-#include "CharacterClass.h"   // FIX: Player → CharacterClass
+#include "CharacterClass.h"
 
 class ShopRoom : public Room {
 private:
@@ -12,7 +12,7 @@ private:
 
 public:
     ShopRoom() {}
-    void TriggerEncounter(CharacterClass& player);   // FIX: Player → CharacterClass
+    void TriggerEncounter(CharacterClass& player);  
 };
 
 #endif

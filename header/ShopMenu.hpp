@@ -2,7 +2,7 @@
 #define SHOP_MENU_H
 
 #include <iostream>
-#include "shop.hpp"
+#include "Shop.hpp"
 #include "CharacterClass.h"
 
 class BoundaryShopMenu {
