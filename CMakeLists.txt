@@ -18,7 +18,7 @@ INCLUDE_DIRECTORIES(
 
 ADD_EXECUTABLE(runCharTests
     test/testCharacterClass.cpp
-    src/characterClass.cpp
+    src/CharacterClass.cpp
 )
 target_link_libraries(runCharTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runCharTests PROPERTIES
@@ -43,6 +43,7 @@ ADD_EXECUTABLE(runMapTests
     src/MapGenerator.cpp
     src/MapNavigationMenu
     src/EncounterMenu.cpp
+    src/MapDisplayer.cpp
 )
 target_link_libraries(runMapTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runMapTests PROPERTIES
@@ -63,3 +64,22 @@ SET_TARGET_PROPERTIES(runShopTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
+ADD_EXECUTABLE(runMainDriver
+    test/mainDriver.cpp 
+    src/StartMenu.cpp
+    src/CharacterSelectMenu.cpp
+    src/CharacterClass.cpp
+    #src/MageClass.cpp
+    #src/WarriorClass.cpp
+    #src/AssassinClass.cpp
+    src/MapNavigationMenu.cpp
+    src/MapDisplayer.cpp
+    src/DungeonMap.cpp
+    src/Room.cpp
+    src/MapGenerator.cpp
+    src/EncounterMenu.cpp
+    
+)
+SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
+RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
+)
