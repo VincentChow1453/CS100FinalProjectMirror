@@ -575,13 +575,11 @@ TEST(DungeonMapMenu, testDownEmptyRoom){
     ASSERT_EQ(output, "Cannot go any further Down\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n[X][X][X][H][X]\n[ ][ ][X][ ][ ]\n[ ][ ][X][ ][ ]\n");
 }
 TEST(MapGenerator, testNumRooms){
-    MapGenerator generator;
     int numRooms=10;
     int newMapWidth=10;
     int newMapHeight=10;
     DungeonMap map;
-    map.setMap(generator.GenerateMap(numRooms, newMapWidth, newMapHeight,&map));
-    map.setMapDimensions(newMapHeight,newMapWidth);
+    MapGenerator::GenerateMap(numRooms, newMapWidth, newMapHeight,&map);
     int countedRooms=0;
     for(int y=0;y<map.getHeight();y++){
         for(int x=0; x<map.getWidth();x++){
