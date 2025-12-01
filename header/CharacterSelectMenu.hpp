@@ -1,4 +1,4 @@
-#include "../header/CharacterClass.h"
+#include "../header/CharacterClass.hpp"
 //#include "../header/mageClass.h"
 //#include "../header/warriorClass.h"
 //#include "../header/assassinClass.h"
