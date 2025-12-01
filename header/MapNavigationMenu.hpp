@@ -6,7 +6,6 @@
 class MapNavigationMenu {
     private:
         DungeonMap map;
-        MapGenerator generator;
     public:
         MapNavigationMenu();
         MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight);
