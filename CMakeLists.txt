@@ -51,12 +51,13 @@ RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
 ADD_EXECUTABLE(runShopTests
+
     test/testShop.cpp
+    src/Items.cpp
+    src/ItemClass.cpp
     src/Shop.cpp
     src/ShopRoom.cpp
     src/ShopMenu.cpp
-    src/ItemClass.cpp
-    src/Items.cpp
     src/CharacterClass.cpp
 )
 

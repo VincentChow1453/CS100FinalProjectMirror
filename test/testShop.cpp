@@ -15,8 +15,10 @@ TEST(ItemTest, CreateItem) {
     EXPECT_EQ(potion.amount, 50);
 }
 
-TEST(ItemTest, EditCharacterSrength) {
+TEST(ItemTest, EditCharacterStrength) {
     CharacterClass testPlayer("Warrior", "Bob", 100, 50, 10, 1, 0);
+
+    testPlayer.addItem("Wooden Sword");  // <-- REQUIRED
 
     Item* sword = getItemByName("Wooden Sword");
 
@@ -25,6 +27,7 @@ TEST(ItemTest, EditCharacterSrength) {
 
     EXPECT_EQ(testPlayer.getBaseStrength(), oldStrength + sword->amount);
 }
+
 
 
 
