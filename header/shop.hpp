@@ -5,7 +5,7 @@
 #include <vector>
 #include "ItemClass.hpp"
 #include "Items.hpp"
-#include "characterClass.h"
+#include "CharacterClass.h"
 
 class Shop {
 private:

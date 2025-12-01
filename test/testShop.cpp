@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "ItemClass.hpp"
 #include "Items.hpp"
-#include "characterClass.h"
+#include "CharacterClass.h"
 #include "shop.hpp"
 #include "shopRoom.hpp"
 

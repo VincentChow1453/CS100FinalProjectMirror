@@ -1,9 +1,9 @@
-#ifndef BOUNDARY_SHOP_MENU_H
-#define BOUNDARY_SHOP_MENU_H
+#ifndef SHOP_MENU_H
+#define SHOP_MENU_H
 
 #include <iostream>
 #include "shop.hpp"
-#include "characterClass.h"
+#include "CharacterClass.h"
 
 class BoundaryShopMenu {
 private:

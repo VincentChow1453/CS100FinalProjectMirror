@@ -3,8 +3,8 @@
 
 #include "Room.hpp"
 #include "shop.hpp"
-#include "boundaryShopMenu.hpp"
-#include "characterClass.h"   // FIX: Player → CharacterClass
+#include "ShopMenu.hpp"
+#include "CharacterClass.h"   // FIX: Player → CharacterClass
 
 class ShopRoom : public Room {
 private:
