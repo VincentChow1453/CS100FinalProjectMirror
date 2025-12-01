@@ -1,5 +1,4 @@
 #include "MonsterStats.hpp"
-#include "CharacterStats.hpp"
 #include <algorithm>
 #include <iostream>
 

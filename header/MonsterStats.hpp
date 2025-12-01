@@ -1,6 +1,7 @@
 #pragma once
+#include "CharacterStats.hpp"
 #include <string>
-#include "Character.hpp"
+using namespace std;
 // MonsterStats holds the stats and behaviors of a monster in the game
 class MonsterStats {
 private:
@@ -12,13 +13,13 @@ private:
 public:
     MonsterStats(const std::string& n, int h, int d, int x);
 // Getters for monster attributes
-    const std::string& getName() const;
+    string getName() const;
     int getHealth() const;
     int getDamage() const;
     int getXPReward() const;
 // Methods to manipulate monster state
     void takeDamage(int dmg);
     bool isDead() const;
-    void attack(Character& player);
-    void die(Character& player);
+    void attack(CharacterStats& player);
+    void die(CharacterStats& player);
 };
