@@ -3,16 +3,20 @@
 
 
 #include <vector>
-#include "itemStub.hpp"
-#include "player.hpp"
+#include "ItemClass.hpp"
+#include "Items.hpp"
+#include "characterClass.h"
 
 class Shop {
 private:
-    vector<Item> catalogue;
+    vector<string> catalogue;
+
 
 public:
-    void buyItem(int option);
-    void sellItem(int index, Player& player);
+    Shop();
+    void addItem(const string& item);
+    void buyItem(int option, CharacterClass& player);
+    void sellItem(const string& itemName, CharacterClass& player);
     void displayItems();
 };
 

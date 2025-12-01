@@ -1,27 +1,13 @@
-#include <iostream>
-#include "shopRoom.hpp"
-#include "player.hpp"
-
-using namespace std;
+#include "shop.hpp"
+#include "boundaryShopMenu.hpp"
+#include "characterClass.h"
 
 int main() {
-    // Create Player
-    Player player;
+    CharacterClass player("Warrior", "John", 100, 50, 20, 1, 100);
+    Shop shop;
+    BoundaryShopMenu menu;
 
-    // Add some items to inventory for testing
-    player.inv.addItem(Item("Potion", 10));
-    player.inv.addItem(Item("Sword", 50));
-    player.inv.addItem(Item("Shield", 40));
-
-    // Create ShopRoom
-    ShopRoom shopRoom;
-
-    cout << "Entering shop..." << endl;
-
-    // Trigger the shop encounter
-    shopRoom.TriggerEncounter(player);
-
-    cout << "Exited shop successfully." << endl;
+    menu.checkShop(shop, player);
 
     return 0;
 }

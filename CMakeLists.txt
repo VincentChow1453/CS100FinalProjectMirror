@@ -54,11 +54,33 @@ ADD_EXECUTABLE(runShopTests
     test/testShop.cpp
     src/shop.cpp
     src/shopRoom.cpp
-    src/player.cpp
-    src/inventory.cpp
-    src/itemStub.cpp
     src/boundaryShopMenu.cpp
+    src/ItemClass.cpp
+    src/Items.cpp
+    src/characterClass.cpp
 )
+
+
+# MAIN GAME EXECUTABLE
+add_executable(game
+    src/main.cpp
+    src/shop.cpp
+    src/shopRoom.cpp
+    src/boundaryShopMenu.cpp
+    src/characterClass.cpp
+    src/ItemClass.cpp
+    src/Items.cpp
+    src/Room.cpp
+    src/DungeonMap.cpp
+    src/MapGenerator.cpp
+    src/MapNavigationMenu.cpp
+    src/EncounterMenu.cpp
+    src/MonsterStats.cpp
+    src/BattleRoom.cpp
+    src/BattleMenu.cpp
+)
+
+
 target_link_libraries(runShopTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runShopTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"

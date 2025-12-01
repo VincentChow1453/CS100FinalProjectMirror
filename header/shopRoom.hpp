@@ -4,7 +4,7 @@
 #include "Room.hpp"
 #include "shop.hpp"
 #include "boundaryShopMenu.hpp"
-#include "player.hpp"
+#include "characterClass.h"   // FIX: Player → CharacterClass
 
 class ShopRoom : public Room {
 private:
@@ -12,7 +12,7 @@ private:
 
 public:
     ShopRoom() {}
-    void TriggerEncounter(Player& player); 
+    void TriggerEncounter(CharacterClass& player);   // FIX: Player → CharacterClass
 };
 
 #endif
