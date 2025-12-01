@@ -59,7 +59,7 @@ void Shop::buyItem(int option, CharacterClass& player) {
     Item * item = getItemByName(itemName);
 
     if (!item){
-        cout << "Item was not found in database\n";
+        cout << "Item was not found.\n";
         return;
     }
 
