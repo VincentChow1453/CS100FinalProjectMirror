@@ -1,5 +1,5 @@
-#ifndef CHARACTER_CLASS_H
-#define CHARACTER_CLASS_H
+#ifndef CHARACTER_CLASS_HPP
+#define CHARACTER_CLASS_HPP
 
 #include <string>
 #include <vector>

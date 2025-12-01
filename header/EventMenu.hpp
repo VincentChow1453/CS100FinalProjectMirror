@@ -1,7 +1,7 @@
 #ifndef EVENT_MENU_H
 #define EVENT_MENU_H
 
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 #include <string>
 
 void eventMenu(CharacterClass& player);

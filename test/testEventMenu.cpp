@@ -1,5 +1,5 @@
 #include "EventMenu.hpp"
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 #include <gtest/gtest.h>
 #include <sstream>
 #include <iostream>
