@@ -63,3 +63,14 @@ SET_TARGET_PROPERTIES(runShopTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
+ADD_EXECUTABLE(runEventMenuTests
+    test/testEventMenu.cpp
+    src/EventMenu.cpp
+    src/EncounterMenu.cpp
+    src/Room.cpp
+    src/characterClass.cpp
+)
+target_link_libraries(runEventMenuTests gmock gtest gtest_main)
+SET_TARGET_PROPERTIES(runEventMenuTests PROPERTIES
+RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
+)
