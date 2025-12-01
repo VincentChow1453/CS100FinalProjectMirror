@@ -2,15 +2,14 @@
 #define MAPNAVIGATIONMENU_HPP
 #include "DungeonMap.hpp"
 #include "MapGenerator.hpp"
-#include "MiscMenu.hpp"
-class MapNavigationMenu : MiscMenu{
+class MapNavigationMenu{
     private:
         DungeonMap map;
     protected:
-        void displayMenu() const override;//helper class for startMenu
-        void chooseOption(const int option) override;//helper class for startMenu
+        void displayMenu() const ;//helper class for startMenu
+        void chooseOption(const int option) ;//helper class for startMenu
     public:
-        void startMenu() override;
+        void startMenu() ;
         MapNavigationMenu();
         MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight);
         DungeonMap* getMap();
