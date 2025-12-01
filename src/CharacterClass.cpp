@@ -160,7 +160,7 @@ void CharacterClass::useItem(const Item& item) {
     else {
         cout << "Unknown item type: " << item.type << endl;
     }
-
+    // deletes item after use
     removeItem(item.name);
 }
 
