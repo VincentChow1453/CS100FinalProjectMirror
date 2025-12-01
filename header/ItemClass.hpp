@@ -9,9 +9,11 @@ class Item {
     public:
     string name;
     int price;
+    string type;
+    int amount;
 
     Item();
-    Item(string item, int price);
+    Item(string item, int price, string type, int amount);
 };
 
 

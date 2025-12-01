@@ -1,17 +1,35 @@
 #include <gtest/gtest.h>
 #include "ItemClass.hpp"
 #include "Items.hpp"
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 #include "Shop.hpp"
 #include "ShopRoom.hpp"
 
 // ITEM TESTS
 TEST(ItemTest, CreateItem) {
-    Item potion("Potion", 10);
+    Item potion("Potion", 10, "health", 50);
 
     EXPECT_EQ(potion.name, "Potion");
     EXPECT_EQ(potion.price, 10);
+    EXPECT_EQ(potion.type, "health");
+    EXPECT_EQ(potion.amount, 50);
 }
+
+TEST(ItemTest, EditCharacterStrength) {
+    CharacterClass testPlayer("Warrior", "Bob", 100, 50, 10, 1, 0);
+
+    testPlayer.addItem("Wooden Sword");  // <-- REQUIRED
+
+    Item* sword = getItemByName("Wooden Sword");
+
+    int oldStrength = testPlayer.getBaseStrength();
+    testPlayer.useItem(*sword);
+
+    EXPECT_EQ(testPlayer.getBaseStrength(), oldStrength + sword->amount);
+}
+
+
+
 
 // INVENTORY/INV TESTS
 TEST(InventoryTest, AddItems) {

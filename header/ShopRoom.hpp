@@ -4,7 +4,7 @@
 #include "Room.hpp"
 #include "Shop.hpp"
 #include "ShopMenu.hpp"
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 
 class ShopRoom : public Room {
 private:

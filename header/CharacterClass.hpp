@@ -1,8 +1,9 @@
-#ifndef CHARACTER_CLASS_H
-#define CHARACTER_CLASS_H
+#ifndef CHARACTER_CLASS_HPP
+#define CHARACTER_CLASS_HPP
 
 #include <string>
 #include <vector>
+#include "ItemClass.hpp"
 
 using namespace std;
 
@@ -51,9 +52,12 @@ public:
     void setGold(int amount);
 
     //inventory management
+       
+
     void addItem(const string& item);
     void removeItem(const string& item);
     void displayInventory() const;
+    void useItem(const Item& item);
 };
 
 #endif

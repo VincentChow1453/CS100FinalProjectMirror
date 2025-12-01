@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Shop.hpp"
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 
 class BoundaryShopMenu {
 private:

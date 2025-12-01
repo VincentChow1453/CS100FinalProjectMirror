@@ -4,14 +4,15 @@ using namespace std;
 
 // Items in our shop
 Shop::Shop() {
-    addItem("Wooden Sword");
-    addItem("Stone Sword");
-    addItem("Metal Sword");
-    addItem("Light Armor");
-    addItem("Heavy Armor");
-    addItem("Bandage");
-    addItem("Health Potion");
+    catalogue = {
+        "Wooden Sword",
+        "Stone Sword",
+        "Metal Sword",
+        "Bandage",
+        "Health Potion"
+    };
 }
+
 
 // Adding manually
 void Shop::addItem(const string& itemName){
