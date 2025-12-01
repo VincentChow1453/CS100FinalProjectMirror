@@ -52,8 +52,8 @@ RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 
 ADD_EXECUTABLE(runShopTests
     test/testShop.cpp
-    src/shop.cpp
-    src/shopRoom.cpp
+    src/Shop.cpp
+    src/ShopRoom.cpp
     src/ShopMenu.cpp
     src/ItemClass.cpp
     src/Items.cpp
@@ -89,7 +89,7 @@ ADD_EXECUTABLE(runEventMenuTests
     src/EventMenu.cpp
     src/EncounterMenu.cpp
     src/Room.cpp
-    src/characterClass.cpp
+    src/CharacterClass.cpp
 )
 target_link_libraries(runEventMenuTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runEventMenuTests PROPERTIES

@@ -2,8 +2,8 @@
 #include "ItemClass.hpp"
 #include "Items.hpp"
 #include "CharacterClass.h"
-#include "shop.hpp"
-#include "shopRoom.hpp"
+#include "Shop.hpp"
+#include "ShopRoom.hpp"
 
 // ITEM TESTS
 TEST(ItemTest, CreateItem) {
