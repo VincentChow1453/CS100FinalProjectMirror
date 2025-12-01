@@ -16,7 +16,7 @@ TEST(MonsterStatsTest_Attack, BasicInitialization) {
 
 TEST(MonsterStatsTest_Attack, Attack) {
     MonsterStats goblin("Goblin", 20, 5, 10);
-    Character hero;   // 원래 매개변수 이름 hero 사용
+    CharacterStats hero;   // 원래 매개변수 이름 hero 사용
     hero.currentHP = 100; // 초기 체력
 
     goblin.attack(hero);
@@ -39,7 +39,7 @@ TEST(CharacterStatsTest_HPAndXPManipulation, Manipulation) {
 // BattleRoom Tests
 TEST(BattleRoomTest_SingleMonsterAccess, Access) {
     MonsterStats slime("Slime", 10, 3, 5); // slime 사용
-    Character hero;           // hero 사용
+    CharacterStats hero;           // hero 사용
     hero.currentHP = 100;
     CharacterClass cls("Warrior", "Hero", 100, 50, 10, 1, 0); // cls 사용
 
