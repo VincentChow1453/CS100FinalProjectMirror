@@ -7,11 +7,26 @@
 
 // ITEM TESTS
 TEST(ItemTest, CreateItem) {
-    Item potion("Potion", 10);
+    Item potion("Potion", 10, "health", 50);
 
     EXPECT_EQ(potion.name, "Potion");
     EXPECT_EQ(potion.price, 10);
+    EXPECT_EQ(potion.type, "health");
+    EXPECT_EQ(potion.amount, 50);
 }
+
+TEST(ItemTest, EditCharacterSrength) {
+    CharacterClass testPlayer("Warrior", "Bob", 100, 50, 10, 1, 0);
+
+    Item* sword = getItemByName("Wooden Sword");
+
+    int oldStrength = testPlayer.getBaseStrength();
+    testPlayer.useItem(*sword);
+
+    EXPECT_EQ(testPlayer.getBaseStrength(), oldStrength + sword->amount);
+}
+
+
 
 // INVENTORY/INV TESTS
 TEST(InventoryTest, AddItems) {

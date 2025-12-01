@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "ItemClass.hpp"
 
 using namespace std;
 
@@ -51,9 +52,12 @@ public:
     void setGold(int amount);
 
     //inventory management
+       
+
     void addItem(const string& item);
     void removeItem(const string& item);
     void displayInventory() const;
+    void useItem(const Item& item);
 };
 
 #endif

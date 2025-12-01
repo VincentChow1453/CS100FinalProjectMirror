@@ -142,3 +142,24 @@ void CharacterClass::displayInventory() const {
         cout << " - " << *invDisplayer << endl;
     }
 }
+
+// edits characters stats
+void CharacterClass::useItem(const Item& item) {
+    if (item.type == "health") {
+        baseHealth += item.amount;
+    }
+
+    else if (item.type == "mana") {
+        baseMana += item.amount;
+    }
+
+    else if (item.type == "strength") {
+        baseStrength += item.amount;
+    }
+    
+    else {
+        cout << "Unknown item type: " << item.type << endl;
+    }
+}
+
+
