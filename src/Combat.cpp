@@ -1,4 +1,4 @@
-#include "Combat.hpp"
+#include "Combat.hpp" 
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -58,7 +58,14 @@ void Combat::monsterAttack() {
 
     dmg = playerDefending ? static_cast<int>(dmg*0.4) : dmg;
     
-    player->setBaseHealth(player->getBaseHealth() - dmg); 
+    // Use try-catch because CharacterClass::setBaseHealth might throw an exception if health goes negative
+    try {
+        player->setBaseHealth(player->getBaseHealth() - dmg); 
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Warning: monsterAttack caught exception: " << e.what() << std::endl;
+        player->setBaseHealth(0); // Ensure health is 0 if it would be negative
+    }
+
     cout << monster->getName() << " attacks " << player->getName() << " for " << dmg << " damage!\n";
     playerDefending = false;
 
@@ -102,14 +109,23 @@ void Combat::applyStatus(CharacterClass* target, StatusEffectType statusType) {
 }
 
 void Combat::applyStatusDamage() {
+    // Use try-catch for status damage application as well
     if (playerBurnStacks > 0) {
         int dmg = playerBurnStacks * 7;
-        player->setBaseHealth(player->getBaseHealth() - dmg);
+        try {
+            player->setBaseHealth(player->getBaseHealth() - dmg);
+        } catch (const std::invalid_argument& e) {
+             player->setBaseHealth(0); 
+        }
         cout << player->getName() << " takes " << dmg << " damage from BURN (" << playerBurnStacks << " stacks)!\n";
     }
     if (playerPoisonStacks > 0) {
         int dmg = playerPoisonStacks * 5;
-        player->setBaseHealth(player->getBaseHealth() - dmg);
+        try {
+            player->setBaseHealth(player->getBaseHealth() - dmg);
+        } catch (const std::invalid_argument& e) {
+             player->setBaseHealth(0); 
+        }
         cout << player->getName() << " takes " << dmg << " damage from POISON (" << playerPoisonStacks << " stacks)!\n";
     }
 
@@ -136,7 +152,6 @@ void Combat::updateDurations() {
     }
 }
 
-
 bool Combat::isMonsterDead() const { return monster->getCurrentHP() <= 0; }
 bool Combat::isPlayerDead() const { return player->getBaseHealth() <= 0; }
 bool Combat::isPlayerParalyzed() const { return playerStatus == PARALYSIS; }
@@ -161,3 +176,12 @@ std::string Combat::getPlayerName() const { return player->getName(); }
 std::string Combat::getMonsterName() const { return monster->getName(); }
 int Combat::getMonsterXPReward() const { return monster->getXPReward(); }
 int Combat::getMonsterGoldReward() const { return monster->getGoldReward(); }
+
+void Combat::setPlayerHP(int newHP) {
+    try {
+        player->setBaseHealth(newHP); 
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Caught expected exception during setPlayerHP sync: " << e.what() << std::endl;
+        player->setBaseHealth(0); 
+    }
+}

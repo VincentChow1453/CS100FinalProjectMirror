@@ -12,6 +12,8 @@ lib/
 y
 y.pub
 runBattleTesets
+.vscode/
+
 
 test/runMapTests
 test/runCharTests

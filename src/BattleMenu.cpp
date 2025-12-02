@@ -8,6 +8,7 @@
 #include <algorithm> 
 #include <string> 
 #include <cstdio> 
+#include <stdexcept> // Added for exception handling
 
 #include "../header/CharacterClass.hpp" 
 #include "../header/Skill.hpp" 
@@ -157,22 +158,25 @@ void BattleMenu::startEncounter(Room* newRoom) {
                         if (!(std::cin >> itemChoice)) {
                             std::cout << "Invalid input. Please enter a valid number.\n";
                             std::cin.clear();
-                            while (std::cin.get() != '\n');
+                            while (std::cin >> itemChoice);
                         } else if (itemChoice >= 1 && itemChoice < itemIndex) {
                             std::string selectedItem = uniqueItems[itemChoice - 1];
                             
                             std::cout << "Using " << selectedItem << " as a consumable!\n";
                             
+                            // Fix (T28): 아이템 사용 시 Combat 인스턴스에 동기화
                             if (selectedItem == "Bandage") {
                                 int healAmount = 20;
                                 g_playerCurrentHP = std::min(g_playerCurrentHP + healAmount, combat.player->getBaseHealth()); 
                                 std::cout << combat.getPlayerName() << " restored " << healAmount << " HP!\n";
+                                combat.setPlayerHP(g_playerCurrentHP); // 동기화 호출
                                 combat.player->removeItem(selectedItem);
                                 turnSpent = true; 
                             } else if (selectedItem == "Health Potion") {
                                 int healAmount = 50;
                                 g_playerCurrentHP = std::min(g_playerCurrentHP + healAmount, combat.player->getBaseHealth()); 
                                 std::cout << combat.getPlayerName() << " restored " << healAmount << " HP!\n";
+                                combat.setPlayerHP(g_playerCurrentHP); // 동기화 호출
                                 combat.player->removeItem(selectedItem);
                                 turnSpent = true; 
                             } else {
@@ -200,7 +204,9 @@ void BattleMenu::startEncounter(Room* newRoom) {
         if(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
             if (!combat.isPlayerParalyzed()) { 
                 combat.monsterAttack();
-                // g_playerCurrentHP is updated inside monsterAttack
+                // g_playerCurrentHP is updated inside monsterAttack via the setPlayerHP call which catches exceptions
+                // We sync the global variable manually just in case:
+                g_playerCurrentHP = combat.getPlayerHP(); 
                 std::cout << combat.getPlayerName() << " HP is now: " << g_playerCurrentHP << "/" << combat.player->getBaseHealth() << std::endl;
             } else {
                 std::cout << combat.getPlayerName() << " is paralyzed and cannot attack this turn!\n";

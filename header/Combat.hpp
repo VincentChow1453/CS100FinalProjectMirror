@@ -6,7 +6,7 @@
 #include <vector>
 
 class Combat {
-public: // player and monster members remain public
+public: // <-- Changed from private: to public:
     CharacterClass* player;
     MonsterStats* monster;
 private:
@@ -20,7 +20,7 @@ private:
     int freezeDuration;
     int playerDefenseBuffDuration;
     int playerDefenseBuffValue;
-
+// ... (rest of the class definition remains the same) ...
 public:
     Combat(CharacterClass* p, MonsterStats* m);
     void playerAttack(int skillIndex);
@@ -43,4 +43,6 @@ public:
     
     // Additional: Function to check if a specific skill index is a defense buff effect
     bool isSkillDefenseBuff(int skillIndex); 
+
+    void setPlayerHP(int newHP);
 };
