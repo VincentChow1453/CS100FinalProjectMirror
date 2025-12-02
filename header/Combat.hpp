@@ -1,5 +1,5 @@
 #pragma once
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 #include "MonsterStats.hpp"
 #include "Skill.hpp"
 #include <string>
