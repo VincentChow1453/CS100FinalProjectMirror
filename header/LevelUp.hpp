@@ -1,7 +1,7 @@
 #ifndef LEVELUP_HPP
 #define LEVELUP_HPP
 
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 #include "MonsterStats.hpp" // For accessing the Stage enum
 
 // Function to determine the current stage based on player level

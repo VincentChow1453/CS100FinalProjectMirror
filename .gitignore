@@ -19,3 +19,4 @@ test/runMonsterTests
 test/runShopTests
 test/runMainDriver
 test/runEventMenuTests
+test/runBattleTests

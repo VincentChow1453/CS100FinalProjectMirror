@@ -9,7 +9,7 @@
 #include <string> 
 #include <cstdio> 
 
-#include "../header/CharacterClass.h" 
+#include "../header/CharacterClass.hpp" 
 #include "../header/Skill.hpp" 
 #include "../header/Items.hpp" 
 

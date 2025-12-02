@@ -1,7 +1,7 @@
 #pragma once
 #include "EncounterMenu.hpp"
 #include "Combat.hpp"
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 #include "MonsterStats.hpp"
 
 class BattleMenu : public EncounterMenu {
