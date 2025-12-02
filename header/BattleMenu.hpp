@@ -1,18 +1,23 @@
 #pragma once
+#include "EncounterMenu.hpp"
+#include "Combat.hpp"
+#include "CharacterClass.h"
 #include "MonsterStats.hpp"
 
-// BattleMenu handles the interaction during a battle encounter
-class BattleMenu {
+class BattleMenu : public EncounterMenu {
 private:
-    int selection_choice;
-    MonsterStats monster;
-// Displays the battle options to the player
-    void displayMenu() const;
-    void returnToMap();
-// Initiates the battle encounter
+    Combat combat;
+    bool fledSuccessfully = false; // Added: Flag to indicate successful escape
+
 public:
-    BattleMenu(const MonsterStats& m);
-    void startEncounter();
-    void chooseOption(int selection);
-    void run();
+    BattleMenu(CharacterClass* player, MonsterStats* monster) : combat(player, monster) {}
+
+    void startEncounter(Room* newRoom) override;
+    void returnToMap();
+    
+    // Implementation declarations for vtable error resolution and EncounterMenu inheritance
+    void displayMenu() const override; 
+    void chooseOption(int option) override;
+    
+    bool hasFled() const { return fledSuccessfully; } // Added: Getter for escape flag
 };

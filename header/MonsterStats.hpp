@@ -1,27 +1,40 @@
-#pragma once
-#include "CharacterStats.hpp"
+#ifndef MONSTERSTATS_HPP
+#define MONSTERSTATS_HPP
+
 #include <string>
-#include "CharacterStats.hpp"
+#include <vector>
+#include <memory> // For unique_ptr usage
 using namespace std;
 
-class CharacterStats;
+// Enum defining the game stages
+enum Stage { STAGE1, STAGE2, STAGE3, STAGE4, STAGE5, BOSS };
 
 class MonsterStats {
 private:
     string name;
-    int health;
+    int maxHP;
+    int currentHP;
     int damage;
     int xpReward;
+    int goldReward;
+    bool isBoss;
 
 public:
-    MonsterStats(const string& n, int h, int d, int xp);
+    MonsterStats(string n = "Goblin", int h = 50, int a = 10, int xp = 20, int gold = 5, bool boss = false);
 
+    // Getter functions
     string getName() const;
-    int getHealth() const;
+    int getMaxHP() const;
+    int getCurrentHP() const;
     int getDamage() const;
     int getXPReward() const;
+    int getGoldReward() const;
+    bool getIsBoss() const;
+    void setCurrentHP(int hp);
 
-    void takeDamage(int dmg);
-    bool isDead() const;
-    void attack(CharacterStats& player);
+    // Static functions to manage monsters
+    static vector<MonsterStats> getMonsters(Stage stage);
+    static unique_ptr<MonsterStats> createRandomMonster(Stage stage);
 };
+
+#endif

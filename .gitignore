@@ -9,6 +9,9 @@ ScreenLayout.cpp
 runTerminalTests
 build/
 lib/
+y
+y.pub
+runBattleTesets
 
 test/runMapTests
 test/runCharTests

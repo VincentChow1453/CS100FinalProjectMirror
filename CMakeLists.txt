@@ -25,19 +25,24 @@ SET_TARGET_PROPERTIES(runCharTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_EXECUTABLE(runMonsterTests
-    test/testMonster.cpp
+ADD_EXECUTABLE(runBattleTests
+    test/testBattle.cpp
     src/MonsterStats.cpp
     src/BattleRoom.cpp
     src/BattleMenu.cpp
     src/CharacterClass.cpp
-    src/CharacterStats.cpp
-    src/CharacterStatsMenu.cpp
-)
-target_link_libraries(runMonsterTests gmock gtest gtest_main)
-SET_TARGET_PROPERTIES(runMonsterTests PROPERTIES
+    src/Items.cpp 
+    src/ItemClass.cpp  
+    src/Skill.cpp
+    src/LevelUp.cpp
+    src/Combat.cpp
+    src/Room.cpp
+    src/EncounterMenu.cpp
+    )
+target_link_libraries(runBattleTests gmock gtest gtest_main)
+SET_TARGET_PROPERTIES(runBattleTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
-)
+) 
 
 ADD_EXECUTABLE(runMapTests
     test/testMap.cpp
@@ -89,7 +94,7 @@ SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 ADD_EXECUTABLE(runEventMenuTests
-    test/testEventMenu.cpp
+test/testEventMenu.cpp
     src/EventMenu.cpp
     src/EncounterMenu.cpp
     src/Room.cpp
