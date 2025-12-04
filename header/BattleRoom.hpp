@@ -1,7 +1,7 @@
 #pragma once
 #include "CharacterStats.hpp"
 #include "MonsterStats.hpp"
-#include "CharacterClass.h"
+#include "CharacterClass.hpp"
 #include <string>
 
 class BattleRoom {
