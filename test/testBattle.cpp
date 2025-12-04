@@ -13,7 +13,6 @@
 #include <algorithm> // For std::min
 #include <stdexcept> // For std::invalid_argument
 
-extern int g_playerCurrentHP; 
 extern int g_currentXP;
 
 std::string getStatusName(StatusEffectType status);
@@ -31,8 +30,9 @@ protected:
         // MonsterStats(name, hp, damage, xp, gold, boss)
         monster = std::make_unique<MonsterStats>("Goblin", 50, 10, 20, 5, false);
         combat = new Combat(player, monster.get());
-        
-        g_playerCurrentHP = player->getBaseHealth(); 
+
+                g_currentXP = 0; 
+
     }
 
     void TearDown() override {
@@ -202,18 +202,21 @@ TEST_F(CombatTests, T20_CreateRandomMonsterReturnsNonNull) {
 // =============================================================================
 
 TEST_F(CombatTests, T21_RequiredXPFormulaIsCorrect) {
-    EXPECT_EQ(getRequiredXPForNextLevel(1), 100);
-    EXPECT_EQ(getRequiredXPForNextLevel(10), 1000);
+    EXPECT_EQ(getRequiredXPForNextLevel(player), 100);
+    player->setBaseLevel(10);
+    EXPECT_EQ(getRequiredXPForNextLevel(player), 1000);
 }
 
 TEST_F(CombatTests, T22_MaxHealthFormulaIsCorrect) {
-    EXPECT_EQ(calculateMaxHealthByLevel(1), 100);
-    EXPECT_EQ(calculateMaxHealthByLevel(10), 190);
+    EXPECT_EQ(calculateMaxHealthByLevel(player), 100);
+    player->setBaseLevel(10);
+    EXPECT_EQ(calculateMaxHealthByLevel(player), 190);
 }
 
 TEST_F(CombatTests, T23_MaxManaFormulaIsCorrect) {
-    EXPECT_EQ(calculateMaxManaByLevel(1), 50);
-    EXPECT_EQ(calculateMaxManaByLevel(10), 95);
+    EXPECT_EQ(calculateMaxManaByLevel(player), 50);
+    player->setBaseLevel(10);
+    EXPECT_EQ(calculateMaxManaByLevel(player), 95);
 }
 
 TEST_F(CombatTests, T24_GainingPartialXPDoesNotLevelUp) {
@@ -228,17 +231,6 @@ TEST_F(CombatTests, T25_GainingExactXPLevelsUpOnce) {
     EXPECT_EQ(g_currentXP, 0); 
 }
 
-// Fix (T26): Reverting T26 expectations to 110 HP to match the game's current HP formula
-TEST_F(CombatTests, T26_LevelUpSyncsGlobalHPAndPlayerStats) {
-    // Interaction check: LevelUp logic updates CharacterClass (outside scope) and global var g_playerCurrentHP (in scope)
-    int oldBaseHealth = player->getBaseHealth(); // 100
-    grantExperienceAndCheckLevelUp(player, 100); 
-    int newBaseHealth = player->getBaseHealth(); // 110 (calculated by formula)
-
-    EXPECT_NE(oldBaseHealth, newBaseHealth);
-    EXPECT_EQ(newBaseHealth, 110); // Fix: Expected value is 110
-    EXPECT_EQ(g_playerCurrentHP, 110); // Fix: Expected value is 110
-}
 
 // =============================================================================
 // 5. Interaction Tests (In-Scope Files <-> Out-of-Scope Files) - 4 Tests
@@ -255,26 +247,6 @@ TEST_F(CombatTests, T27_CombatSystemReadsDynamicallyUpdatedStrengthFromCharacter
     // Combat should immediately use the new value (15 base + 100/2 bonus = 65 damage total)
     combat->playerAttack(0); 
     EXPECT_EQ(combat->getMonsterHP(), 28 - 65);
-}
-
-// Fix (T28): Set Max HP high enough to allow 70 HP recovery
-TEST_F(CombatTests, T28_BattleMenuLogicUpdatesCharacterClassInventoryAndGlobalHP) {
-    // Interaction: BattleMenu logic uses CharacterClass inventory/HP setters/getters
-    
-    // Fix: Set max HP to 100 so the player can heal to 70
-    player->setBaseHealth(100); 
-    g_playerCurrentHP = 50; 
-    player->addItem("Bandage"); // Out-of-scope CharacterClass method
-
-    // Simulate item use logic from in-scope BattleMenu.cpp/startEncounter
-    int healAmount = 20;
-    // g_playerCurrentHP will become 70 here (min(50+20, 100))
-    g_playerCurrentHP = std::min(g_playerCurrentHP + healAmount, player->getBaseHealth()); 
-    player->setBaseHealth(g_playerCurrentHP); // Sync back to out-of-scope CharacterClass
-    player->removeItem("Bandage"); // Out-of-scope CharacterClass method
-
-    EXPECT_EQ(player->getBaseHealth(), 70);
-    EXPECT_EQ(player->getInventory().size(), 0);
 }
 
 TEST_F(CombatTests, T29_MonsterStatsProvideRewardsForLevelUpSystem) {
@@ -304,4 +276,79 @@ TEST_F(CombatTests, T30_SkillSystemUsesItemInfoForDisplay) {
     // Check if "Iron Will" (index 3) is a defense buff using combat helper function
     bool isDefenseBuff = combat->isSkillDefenseBuff(3); 
     EXPECT_TRUE(isDefenseBuff);
+}
+// =============================================================================
+// LevelUp & Stats Calculation Logic Tests (Updated Signatures)
+// =============================================================================
+
+// T21: Verify the maximum health calculation for the base level (Level 1).
+TEST_F(CombatTests, T21_MaxHealthCalculationForBaseLevel) {
+    // Passing the player object to the calculation function
+    // Expected: (90 base + 1*10) = 100
+    EXPECT_EQ(calculateMaxHealthByLevel(player), 100); 
+}
+
+// T22: Verify the maximum health calculation for a mid-tier level (Level 10).
+TEST_F(CombatTests, T22_MaxHealthCalculationForMidLevel) {
+    player->setBaseLevel(10); 
+    // Passing the player object to the calculation function
+    // Expected: (90 base + 10*10) = 190
+    EXPECT_EQ(calculateMaxHealthByLevel(player), 190);
+}
+
+// T23: Verify the maximum mana calculation for a high level (Level 50).
+TEST_F(CombatTests, T23_MaxManaCalculationForHighLevel) {
+    player->setBaseLevel(50); 
+    // Passing the player object to the calculation function
+    // Expected: (45 base + 50*5) = 295
+    EXPECT_EQ(calculateMaxManaByLevel(player), 295);
+}
+
+// T24: Verify that initializePlayerStats sets the current HP/MP to the calculated maximums.
+TEST_F(CombatTests, T24_InitializePlayerStatsSetsCurrentStatsToMax) {
+    // initializePlayerStats already accepts CharacterClass*
+    initializePlayerStats(player);
+    
+    // Using the updated calculation function that takes CharacterClass*
+    int expectedMaxHP = calculateMaxHealthByLevel(player); 
+    int expectedMaxMP = calculateMaxManaByLevel(player);   
+    
+    EXPECT_EQ(player->getBaseHealth(), expectedMaxHP); // Expected: 100
+    EXPECT_EQ(player->getBaseMana(), expectedMaxMP);   // Expected: 50
+}
+
+// T25: Verify that the level-up function correctly increases max HP and MP and updates current stats.
+TEST_F(CombatTests, T25_LevelUpFunctionIncreasesMaxStats) {
+    // Required XP for Lvl 1 is 100.
+    grantExperienceAndCheckLevelUp(player, 100); 
+
+    // Using the updated calculation function that takes CharacterClass*
+    int expectedNewMaxHP = calculateMaxHealthByLevel(player); 
+    int expectedNewMaxMP = calculateMaxManaByLevel(player);   
+    
+    EXPECT_EQ(player->getBaseLevel(), 2); 
+    // Expected Lvl 2 Max HP: (90 + 2*10) = 110
+    // Expected Lvl 2 Max MP: (45 + 2*5) = 55
+    EXPECT_EQ(player->getBaseHealth(), expectedNewMaxHP); 
+    EXPECT_EQ(player->getBaseMana(), expectedNewMaxMP);   
+}
+
+// T26: Verify the strength calculation formula at different levels.
+TEST_F(CombatTests, T26_StrengthCalculationByLevel) {
+    // Passing the player object to the calculation function
+    // Expected: (10 base + 1*5) = 15
+    EXPECT_EQ(calculateStrengthByLevel(player), 15);
+    
+    player->setBaseLevel(10);
+    // Expected: (10 base + 10*5) = 60
+    EXPECT_EQ(calculateStrengthByLevel(player), 60);
+}
+
+// T27: Verify the required XP calculation for the next level.
+TEST_F(CombatTests, T27_RequiredXPForNextLevelCalculation) {
+    // Passing the player object to the calculation function
+    EXPECT_EQ(getRequiredXPForNextLevel(player), 100); // Lvl 1
+    
+    player->setBaseLevel(10);
+    EXPECT_EQ(getRequiredXPForNextLevel(player), 1000); // Lvl 10
 }

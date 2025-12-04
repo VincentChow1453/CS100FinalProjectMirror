@@ -3,6 +3,8 @@
 
 #include "Event.hpp"
 #include <iostream>
+#include "CharacterClass.hpp"
+using namespace std;
 
 class Event1 : public Event {
 public:

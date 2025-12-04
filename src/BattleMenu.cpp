@@ -12,10 +12,9 @@
 
 #include "../header/CharacterClass.hpp" 
 #include "../header/Skill.hpp" 
-#include "../header/Items.hpp" 
+#include "../header/Items.hpp"
+#include "../header/LevelUp.hpp" // Include LevelUp functions for max stat calculation
 
-// Extern declaration for the current HP global variable defined in main.cpp/LevelUp.cpp
-extern int g_playerCurrentHP; 
 
 std::string getStatusName(StatusEffectType status) {
     switch (status) {
@@ -31,8 +30,8 @@ std::string getStatusName(StatusEffectType status) {
 
 void BattleMenu::displayMenu() const {
     std::cout << "\n--- Turn Start ---\n";
-    // Use g_playerCurrentHP for current health, player->getBaseHealth() for max health
-    std::cout << combat.getPlayerName() << " HP: " << g_playerCurrentHP << "/" << combat.player->getBaseHealth()
+    // Use player->getBaseHealth() for current health
+    std::cout << combat.getPlayerName() << " HP: " << combat.player->getBaseHealth() << "/" << combat.player->getBaseHealth()
          << " | MP: " << combat.getPlayerMana() << "/" << combat.player->getBaseMana()
          << "\n" << combat.getMonsterName() << " HP: " << combat.getMonsterHP() << "/" << combat.monster->getMaxHP()
          << " | Damage: " << combat.monster->getDamage() << std::endl;
@@ -48,7 +47,6 @@ void BattleMenu::chooseOption(int option) {
             if (confirm == 'y' || confirm == 'Y') {
                 if (rand() % 2 == 0) {
                     std::cout << combat.getPlayerName() << " successfully ran away!\n";
-                    // g_playerCurrentHP = 0; // !! This line was removed to prevent instant Game Over !!
                     fledSuccessfully = true; // Set the flag instead
                 } else {
                     std::cout << combat.getPlayerName() << " failed to run away!\n";
@@ -62,6 +60,11 @@ void BattleMenu::chooseOption(int option) {
 
 void BattleMenu::startEncounter(Room* newRoom) {
     std::cout << "Battle started!\n";
+
+    // --- Stats Initialization Logic (As requested, using character's current state) ---
+    // Note: The character enters battle with stats set in CharacterSelectMenu/LevelUp system.
+    // We do not force a reset here.
+    // ----------------------------------------------------------------------------------
     
     std::vector<Skill> skills;
     if (combat.player->getClassType() == "Warrior") { skills = Skill::getWarriorSkills(); }
@@ -135,12 +138,12 @@ void BattleMenu::startEncounter(Room* newRoom) {
                         std::cout << "Invalid skill choice. Please choose again (Turn not spent).\n";
                     }
                 } else if (choice == 2) {
-                    const std::vector<std::string>& inventory = combat.player->getInventory();
-                    if (inventory.empty()) {
+                    const std::vector<std::string> Inventory = combat.player->getInventory();
+                    if (Inventory.empty()) {
                         std::cout << "Inventory is empty! (Turn not spent).\n";
                     } else {
                         std::map<std::string, int> itemCounts;
-                        for (std::vector<std::string>::const_iterator it = inventory.begin(); it != inventory.end(); ++it) {
+                        for (std::vector<std::string>::const_iterator it = Inventory.begin(); it != Inventory.end(); ++it) {
                              itemCounts[*it]++;
                         }
                         std::vector<std::string> uniqueItems;
@@ -158,25 +161,40 @@ void BattleMenu::startEncounter(Room* newRoom) {
                         if (!(std::cin >> itemChoice)) {
                             std::cout << "Invalid input. Please enter a valid number.\n";
                             std::cin.clear();
-                            while (std::cin >> itemChoice);
+                            while (std::cin.get() != '\n'); 
                         } else if (itemChoice >= 1 && itemChoice < itemIndex) {
                             std::string selectedItem = uniqueItems[itemChoice - 1];
                             
                             std::cout << "Using " << selectedItem << " as a consumable!\n";
                             
-                            // Fix (T28): 아이템 사용 시 Combat 인스턴스에 동기화
+                            // --- Use LevelUp functions to calculate max stats for item healing limit ---
+                            int maxHP = calculateMaxHealthByLevel(combat.player);
+                            int maxMP = calculateMaxManaByLevel(combat.player);
+
                             if (selectedItem == "Bandage") {
                                 int healAmount = 20;
-                                g_playerCurrentHP = std::min(g_playerCurrentHP + healAmount, combat.player->getBaseHealth()); 
+                                int newHP = std::min(combat.player->getBaseHealth() + healAmount, maxHP); 
+                                combat.player->setBaseHealth(newHP); 
                                 std::cout << combat.getPlayerName() << " restored " << healAmount << " HP!\n";
-                                combat.setPlayerHP(g_playerCurrentHP); // 동기화 호출
                                 combat.player->removeItem(selectedItem);
                                 turnSpent = true; 
                             } else if (selectedItem == "Health Potion") {
                                 int healAmount = 50;
-                                g_playerCurrentHP = std::min(g_playerCurrentHP + healAmount, combat.player->getBaseHealth()); 
+                                int newHP = std::min(combat.player->getBaseHealth() + healAmount, maxHP); 
+                                combat.player->setBaseHealth(newHP); 
                                 std::cout << combat.getPlayerName() << " restored " << healAmount << " HP!\n";
-                                combat.setPlayerHP(g_playerCurrentHP); // 동기화 호출
+                                combat.player->removeItem(selectedItem);
+                                turnSpent = true; 
+                            } else if (selectedItem == "Apple") {
+                                int manaAmount = 15;
+                                int newMana = std::min(combat.getPlayerMana() + manaAmount, maxMP);
+                                combat.player->setBaseMana(newMana);
+                                combat.player->removeItem(selectedItem);
+                                turnSpent = true; 
+                            } else if (selectedItem == "Protein Bar") {
+                                int manaAmount = 40;
+                                int newMana = std::min(combat.getPlayerMana() + manaAmount, maxMP);
+                                combat.player->setBaseMana(newMana);
                                 combat.player->removeItem(selectedItem);
                                 turnSpent = true; 
                             } else {
@@ -199,15 +217,13 @@ void BattleMenu::startEncounter(Room* newRoom) {
                 }
             }
         }
-        
+
         // Monster attack phase: only proceeds if no one is dead and player hasn't fled
         if(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
             if (!combat.isPlayerParalyzed()) { 
                 combat.monsterAttack();
-                // g_playerCurrentHP is updated inside monsterAttack via the setPlayerHP call which catches exceptions
-                // We sync the global variable manually just in case:
-                g_playerCurrentHP = combat.getPlayerHP(); 
-                std::cout << combat.getPlayerName() << " HP is now: " << g_playerCurrentHP << "/" << combat.player->getBaseHealth() << std::endl;
+                // HP update is handled within monsterAttack via setBaseHealth()
+                std::cout << combat.getPlayerName() << " HP is now: " << combat.player->getBaseHealth() << "/" << combat.player->getBaseHealth() << std::endl;
             } else {
                 std::cout << combat.getPlayerName() << " is paralyzed and cannot attack this turn!\n";
             }

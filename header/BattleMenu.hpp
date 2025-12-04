@@ -3,13 +3,16 @@
 #include "Combat.hpp"
 #include "CharacterClass.hpp"
 #include "MonsterStats.hpp"
-
+#include <vector>
 class BattleMenu : public EncounterMenu {
 private:
     Combat combat;
     bool fledSuccessfully = false; // Added: Flag to indicate successful escape
 
 public:
+
+    BattleMenu();
+    
     BattleMenu(CharacterClass* player, MonsterStats* monster) : combat(player, monster) {}
 
     void startEncounter(Room* newRoom) override;
