@@ -31,6 +31,7 @@ ADD_EXECUTABLE(runBattleTests
     src/BattleRoom.cpp
     src/BattleMenu.cpp
     src/CharacterClass.cpp
+    src/CharacterSelectMenu.cpp
     src/Items.cpp 
     src/ItemClass.cpp  
     src/Skill.cpp
