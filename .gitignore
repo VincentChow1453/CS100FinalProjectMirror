@@ -20,6 +20,6 @@ test/runCharTests
 test/runMonsterTests
 test/runShopTests
 test/runMainDriver
-runBattleTests
+test/runBattleTests
 test/runEventMenuTests
 test/runBattleTests
