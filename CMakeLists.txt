@@ -94,7 +94,7 @@ SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_EXECUTABLE(runEventSystemTest
+ADD_EXECUTABLE(runEventSystemTests
     test/testEventSystem.cpp
     src/EncounterMenu.cpp
     src/EventMenu.cpp
@@ -107,6 +107,6 @@ ADD_EXECUTABLE(runEventSystemTest
     src/CharacterClass.cpp
 )
 
-SET_TARGET_PROPERTIES(runEventSystemTest PROPERTIES
+SET_TARGET_PROPERTIES(runEventSystemTests PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
