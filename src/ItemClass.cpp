@@ -7,7 +7,9 @@ Item::Item(){
     price = 0;
 }
 
-Item::Item(string name, int price){
+Item::Item(string item, int price, string type, int amount){
     this->name = name;
     this->price = price;
+    this->type = type;
+    this->amount= amount;
 }
