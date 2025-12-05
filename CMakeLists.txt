@@ -54,6 +54,24 @@ ADD_EXECUTABLE(runMapTests
     src/MapDisplayer.cpp
     src/RoomGenerator.cpp
     src/EntranceRoom.cpp
+    src/BattleRoom.cpp
+    src/EventRoom.cpp
+    src/ShopRoom.cpp
+
+    src/Shop.cpp
+    src/BattleMenu.cpp
+    src/ShopMenu.cpp
+    src/EventMenu.cpp
+    src/Event1.cpp
+    src/Event2.cpp
+    src/Event3.cpp
+    src/Event4.cpp
+    src/CharacterClass.cpp
+    src/Combat.cpp
+    src/Skill.cpp
+    src/MonsterStats.cpp
+    src/Items.cpp
+    src/ItemClass.cpp
 )
 target_link_libraries(runMapTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runMapTests PROPERTIES
@@ -97,7 +115,7 @@ SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_EXECUTABLE(runEventSystemTest
+ADD_EXECUTABLE(runEventSystemTests
     test/testEventSystem.cpp
     src/EncounterMenu.cpp
     src/EventMenu.cpp
@@ -110,6 +128,6 @@ ADD_EXECUTABLE(runEventSystemTest
     src/CharacterClass.cpp
 )
 
-SET_TARGET_PROPERTIES(runEventSystemTest PROPERTIES
+SET_TARGET_PROPERTIES(runEventSystemTests PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )

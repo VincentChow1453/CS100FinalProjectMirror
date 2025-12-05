@@ -6,3 +6,6 @@ void EntranceRoom::TriggerRoom(){//Entrance doesn't do anything when you enter i
     cout<<"This is the entrance. There is nothing more here for you to do."<<endl;
     return;
 }
+void EntranceRoom::OutputMapSymbol()const{
+    cout<<"X";
+}

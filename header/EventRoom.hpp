@@ -12,8 +12,8 @@ private:
 public: 
     void setPlayer(CharacterClass* p) { player = p; }
     CharacterClass* getPlayer() { return player; }
-
     void TriggerRoom() override;
+    void OutputMapSymbol() const override;
 };
 
 #endif

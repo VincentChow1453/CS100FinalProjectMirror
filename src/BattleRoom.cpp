@@ -4,5 +4,10 @@ using namespace std;
 
 void BattleRoom::TriggerRoom() {
     cout << "Entering Battle Room!\n";
-    menu->startEncounter(this); 
+    BattleMenu new_menu_object; 
+    new_menu_object.startEncounter(this);
+
+} 
+void BattleRoom::OutputMapSymbol()const{
+    cout<<"B";
 }

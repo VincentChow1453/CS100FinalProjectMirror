@@ -14,7 +14,9 @@ void MapDisplayer::DisplayMap(const DungeonMap* map){
                 cout<<"[H]";
             }
             else{
-                cout<<"[X]";
+                cout<<"[";
+                mapMatrix->at(y).at(x)->OutputMapSymbol();
+                cout<<"]";
             }
         }
         cout<<endl;

@@ -33,11 +33,11 @@ vector<MonsterStats> MonsterStats::getMonsters(Stage stage) {
         case STAGE4:
             return { MonsterStats("Harpy", 200, 28, 55, 30),
                      MonsterStats("Ogre", 220, 30, 60, 35),
-                     MonsterStats("Witch", 180, 24, 50, 28) };
+                     MonsterStats("Vampire", 180, 24, 50, 28) };
         case STAGE5:
             return { MonsterStats("Golem", 250, 32, 70, 40),
-                     MonsterStats("Vampire", 240, 30, 65, 38),
-                     MonsterStats("Minotaur", 260, 35, 75, 42) };
+                     MonsterStats("Witch", 200, 30, 65, 38),
+                     MonsterStats("Minotaur", 260, 40, 75, 42) };
         case BOSS:
             return { MonsterStats("Death Dragon", 500, 30, 100, 100, true) };
         default:

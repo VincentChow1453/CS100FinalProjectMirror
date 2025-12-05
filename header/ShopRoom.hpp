@@ -13,6 +13,7 @@ private:
 public: 
     ShopRoom() {}
     void TriggerEncounter(CharacterClass& player);  
+    void OutputMapSymbol() const override;
 };
 
 #endif
