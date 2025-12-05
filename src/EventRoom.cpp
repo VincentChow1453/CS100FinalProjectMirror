@@ -6,7 +6,6 @@ void EventRoom::TriggerRoom(){//This will be the general layout for all Room typ
     activated=true;
     EventMenu menu;//Replace EncounterMenu with whatever menu you're working with, eg. BattleMenu, EventMenu, ShopMenu.
     menu.startEncounter(this);
-    cout<<"Room TriggerRoom() stub"<<endl;
 }
 void EventRoom::OutputMapSymbol()const{
     cout<<"E";
