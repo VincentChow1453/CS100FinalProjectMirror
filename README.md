@@ -173,5 +173,7 @@
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ * We tested for memory leaks with Valgrind
+ * We created unit tests for most classes/functions in our project
+ * We made drivers to test our classes.
  
