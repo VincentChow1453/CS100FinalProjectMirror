@@ -15,17 +15,13 @@ Room* RoomGenerator::generateRandomRoom(){
     const int EVENT_ROOM_WEIGHT=10;//
     const int SHOP_ROOM_WEIGHT=10;//
     int selection=rand()%(BATTLE_ROOM_WEIGHT+EVENT_ROOM_WEIGHT+SHOP_ROOM_WEIGHT);
-    Room* newRoom=nullptr;
     if(selection<=BATTLE_ROOM_WEIGHT){
-        newRoom=generateBattleRoom();
-        return newRoom;
+        return generateBattleRoom();
     }
     else if (selection<=BATTLE_ROOM_WEIGHT+EVENT_ROOM_WEIGHT){
-        newRoom=generateEventRoom();
-        return newRoom;
+        return generateEventRoom();
     }
     else{
-        newRoom=generateShopRoom();
-        return newRoom;
+        return generateShopRoom();
     }
 }

@@ -13,6 +13,7 @@ DungeonMap::~DungeonMap(){
         for(int i=0; i<mapMatrix->size();i++){
             for(int j=0;j<mapMatrix->at(i).size();j++){
                 delete mapMatrix->at(i).at(j);
+                mapMatrix->at(i).at(j)=nullptr;
             }
         }   
     }
@@ -45,11 +46,13 @@ void DungeonMap::setMap(vector<vector<Room*>>* newMapPtr){
     if(mapMatrix!=nullptr){
         for(int i=0; i<mapMatrix->size();i++){
             for(int j=0;j<mapMatrix->at(i).size();j++){
-                delete mapMatrix->at(i).at(j);
+                if(mapMatrix->at(i).at(j)!=nullptr) delete mapMatrix->at(i).at(j);
+                mapMatrix->at(i).at(j)=nullptr;
             }
         }   
+        delete mapMatrix;
+        mapMatrix=nullptr;
     }
-    delete mapMatrix;
     mapMatrix=newMapPtr;
 }
 Room* DungeonMap::getRoom(const int x, const int y){
