@@ -9,7 +9,6 @@ using namespace std;
 
 class CharacterClass {
 private:
-//classes TBD, will have at least 3 I think
     string classType;
     string name;
     int baseHealth;
