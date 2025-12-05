@@ -1,6 +1,6 @@
 #include "Room.hpp"
 #include "BattleRoom.hpp"
-#include "shopRoom.hpp"
+#include "ShopRoom.hpp"
 //#include "eventRoom.hpp"
 #include "MonsterStats.hpp"
 //#include "Item.hpp"
@@ -13,7 +13,7 @@ class RoomGenerator{
         // vector<Event_Encounter> eventList;
     public:
         static BattleRoom* generateBattleRoom();
-        static shopRoom* generateShopRoom();
+        static ShopRoom* generateShopRoom();
         //static EventRoom* generateEventRoom();
         static Room* generateRandomRoom();
 };

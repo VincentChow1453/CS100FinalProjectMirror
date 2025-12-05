@@ -13,7 +13,8 @@ class Item {
     int amount;
 
     Item();
-    Item(string item, int price, string type, int amount);
+    Item(string item, int price, string type="", int amount=0);
+
 };
 
 
