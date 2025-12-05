@@ -10,4 +10,4 @@ class Room{
         virtual void TriggerRoom();//=0; //Room should be an abstract class once we create its subclasses.
         virtual void OutputMapSymbol() const;
 };
-#endif //ROOM_HPP
+#endif

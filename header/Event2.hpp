@@ -2,9 +2,6 @@
 #define EVENT2_HPP
 
 #include "Event.hpp"
-#include <iostream>
-#include "CharacterClass.hpp"
-using namespace std;
 
 class Event2 : public Event {
 public:

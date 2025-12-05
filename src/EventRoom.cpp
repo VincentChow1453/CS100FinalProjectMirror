@@ -2,9 +2,9 @@
 #include "../header/EventMenu.hpp"
 #include <iostream>
 using namespace std;
-void EventRoom::TriggerRoom(){//This will be the general layout for all Room types.
+void EventRoom::TriggerRoom(){
     activated=true;
-    EventMenu menu;//Replace EncounterMenu with whatever menu you're working with, eg. BattleMenu, EventMenu, ShopMenu.
+    EventMenu menu;
     menu.startEncounter(this);
 }
 void EventRoom::OutputMapSymbol()const{

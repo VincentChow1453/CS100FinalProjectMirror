@@ -20,7 +20,7 @@ public:
     void returnToMap();
     
     void displayMenu() const override; 
-    void chooseOption(int option) override;
+    void chooseOption(int option) override; 
     
     bool hasFled() const { return fledSuccessfully; } 
 };

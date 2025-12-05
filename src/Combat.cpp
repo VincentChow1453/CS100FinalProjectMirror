@@ -4,6 +4,9 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm> // For min, max
+#include "../header/Skill.hpp"
+#include "../header/CharacterClass.hpp"
+#include "../header/MonsterStats.hpp"
 
 using namespace std;
 
@@ -13,6 +16,7 @@ Combat::Combat(CharacterClass* p, MonsterStats* m)
       monsterDoomStacks(0), freezeDuration(0), playerDefenseBuffDuration(0), 
       playerDefenseBuffValue(0) {}
 
+// 반환 타입을 void로 수정했습니다.
 void Combat::playerAttack(int skillIndex) {
     vector<Skill> skills;
     if (player->getClassType() == "Warrior") { skills = Skill::getWarriorSkills(); }
@@ -22,7 +26,7 @@ void Combat::playerAttack(int skillIndex) {
 
     if (skillIndex >= 0 && skillIndex < skills.size()) {
         Skill selectedSkill = skills[skillIndex];
-        // Mana check logic needed (omitted here)
+        // Mana check and consumption is handled in BattleMenu.cpp
 
         int baseDmg = selectedSkill.getDamage();
         int totalDmg = baseDmg + (player->getBaseStrength() / 2); 
@@ -82,7 +86,7 @@ void Combat::monsterAttack() {
         applyStatus(player, PARALYSIS);
     } else if ((mName == "Witch") && chance < 50) { // 50% chance FREEZE
          applyStatus(player, FREEZE);
-    } else if // 100% chance DOOM
+    } else if 
     ((mName == "Death Dragon") ) { applyStatus(player, DOOM); // Always apply DOOM
 }
 }
@@ -99,7 +103,6 @@ void Combat::applyStatus(CharacterClass* target, StatusEffectType statusType) {
         if (statusType == BURN) playerBurnStacks = min(3, playerBurnStacks + 1);
         else if (statusType == POISON) playerPoisonStacks = min(8, playerPoisonStacks + 1);
         else if (statusType == FREEZE) freezeDuration = 2;
-        // else if (statusType == PARALYSIS) { /* Paralysis application logic (requires turn skip) */ }
         
         cout << (toPlayer ? player->getName() : monster->getName()) << " is now affected by status: " << statusType << "!\n";
 
@@ -112,7 +115,6 @@ void Combat::applyStatus(CharacterClass* target, StatusEffectType statusType) {
 }
 
 void Combat::applyStatusDamage() {
-    // Use try-catch for status damage application as well
     if (playerBurnStacks > 0) {
         int dmg = playerBurnStacks * 7;
         try {
