@@ -9,7 +9,7 @@ Shop::Shop() {
         "Stone Sword",
         "Metal Sword",
         "Bandage",
-        "Health Potion"
+        "Health Potion",
         "Rare Gem"
     };
 }
