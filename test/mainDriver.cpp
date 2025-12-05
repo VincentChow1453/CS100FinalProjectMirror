@@ -11,5 +11,6 @@ int main(){
     MapNavigationMenu mapMenu(10,5,5);
     cout<<endl<<"Now we will enter the dungeon."<<endl;
     mapMenu.startMenu();
-
+    delete CharacterSelectMenu::player;
+    CharacterSelectMenu::player=nullptr;
 }

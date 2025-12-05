@@ -10,6 +10,7 @@ class CharacterSelectMenu{
         static void displayClasses();
         static CharacterClass* selectCharacterHelper();
     public: 
+        
         static CharacterClass* player;
         static void selectCharacter();
 
