@@ -9,7 +9,7 @@ private:
     bool activated = false;
     CharacterClass* player = nullptr;
 
-public:
+public: 
     void setPlayer(CharacterClass* p) { player = p; }
     CharacterClass* getPlayer() { return player; }
 

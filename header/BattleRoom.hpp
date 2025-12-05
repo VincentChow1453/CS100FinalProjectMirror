@@ -9,4 +9,4 @@ private:
 public:
     BattleRoom(BattleMenu* m) : menu(m) {}
     void TriggerRoom() override;
-};
+}; 

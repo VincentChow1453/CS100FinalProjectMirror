@@ -10,7 +10,7 @@ class ShopRoom : public Room {
 private:
     Shop roomShop;
 
-public:
+public: 
     ShopRoom() {}
     void TriggerEncounter(CharacterClass& player);  
 };

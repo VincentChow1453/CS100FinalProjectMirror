@@ -1,10 +1,7 @@
 #include "Room.hpp"
 #include "BattleRoom.hpp"
-#include "shopRoom.hpp"
-//#include "eventRoom.hpp"
-#include "MonsterStats.hpp"
-//#include "Item.hpp"
-//#include "Event_Encounter"
+#include "ShopRoom.hpp"
+#include "EventRoom.hpp"
 //currently a stub
 class RoomGenerator{
     private:
@@ -13,7 +10,7 @@ class RoomGenerator{
         // vector<Event_Encounter> eventList;
     public:
         static BattleRoom* generateBattleRoom();
-        static shopRoom* generateShopRoom();
-        //static EventRoom* generateEventRoom();
+        static ShopRoom* generateShopRoom();
+        static EventRoom* generateEventRoom();
         static Room* generateRandomRoom();
 };
