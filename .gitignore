@@ -11,7 +11,7 @@ build/
 lib/
 y
 y.pub
-runBattleTesets
+runBattleTests
 .vscode/
 
 
@@ -22,3 +22,4 @@ test/runShopTests
 test/runMainDriver
 test/runEventMenuTests
 test/runBattleTests
+test/runEventSystemTests
