@@ -143,6 +143,7 @@ void CharacterClass::displayInventory() const {
     }
 }
 
+
 // edits characters stats
 void CharacterClass::useItem(const Item& item) {
     if (item.type == "health") {
@@ -163,5 +164,3 @@ void CharacterClass::useItem(const Item& item) {
     // deletes item after use
     removeItem(item.name);
 }
-
-
