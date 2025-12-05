@@ -102,8 +102,8 @@ SET_TARGET_PROPERTIES(runShopTests PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_EXECUTABLE(runMainDriver
-    test/mainDriver.cpp 
+ADD_EXECUTABLE(runMain
+    src/main.cpp 
     src/StartMenu.cpp
     src/CharacterSelectMenu.cpp
     src/CharacterClass.cpp
@@ -137,9 +137,6 @@ ADD_EXECUTABLE(runMainDriver
     src/Items.cpp
     src/ItemClass.cpp
     src/LevelUp.cpp
-)
-SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
-RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
 
 ADD_EXECUTABLE(runEventSystemTests

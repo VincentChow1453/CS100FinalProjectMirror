@@ -1,13 +1,16 @@
-#include "shop.hpp"
-#include "boundaryShopMenu.hpp"
-#include "characterClass.h"
+#include <iostream>
+#include "StartMenu.hpp"
+#include "CharacterSelectMenu.hpp"
+#include "MapNavigationMenu.hpp"
+#include "MapDisplayer.hpp"
+using namespace std;
 
-int main() {
-    CharacterClass player("Warrior", "John", 100, 50, 20, 1, 100);
-    Shop shop;
-    BoundaryShopMenu menu;
-
-    menu.checkShop(shop, player);
-
-    return 0;
+int main(){
+    StartMenu::OpenMenu();
+    CharacterSelectMenu::selectCharacter();
+    MapNavigationMenu mapMenu(10,5,5);
+    cout<<endl<<"Now we will enter the dungeon."<<endl;
+    mapMenu.startMenu();
+    delete CharacterSelectMenu::player;
+    CharacterSelectMenu::player=nullptr;
 }
