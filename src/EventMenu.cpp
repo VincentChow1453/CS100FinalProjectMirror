@@ -18,7 +18,7 @@ void EventMenu::startEncounter(Room* newRoom) {
     int idx = rand() % events.size();
     Event* currentEvent = events[idx].get();
 
-    //get global player
+    // Get global player
     CharacterClass* player = CharacterSelectMenu::player;
     if (!player) {
         cout << "Error: Player not selected yet!\n";

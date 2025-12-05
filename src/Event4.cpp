@@ -1,4 +1,5 @@
-#include "Event4.hpp"|
+#include "Event4.hpp"
+#include "CharacterSelectMenu.hpp"
 #include <iostream>
 using namespace std;
 
@@ -9,25 +10,24 @@ void Event4::displayMenu() const {
     cout << "3. Steal from them\n";
 }
 
-void Event4::chooseOption(int option, CharacterClass& player) {
+void Event4::chooseOption(int option) {
+    CharacterClass* player = CharacterSelectMenu::player;
+
     while (true) {
         switch (option) {
             case 1:
-                cout << "You walk past. Nothing happens.\n";
+                cout << "You walk past. Nothing happens. Shame on you.\n";
                 return;
-
             case 2:
-                cout << "You help the kid! (+25 gold)\n";
-                player.setGold(player.getGold() + 25);
+                cout << "You help the kid. Good deeds, huh? (+25 gold)\n";
+                player->setGold(player->getGold() + 25);
                 return;
-
             case 3:
-                cout << "You steal from the kid... (+75 gold)\n";
-                player.setGold(player.getGold() + 75);
+                cout << "You steal from the kid... Wow that kid was rich! (+75 gold)\n";
+                player->setGold(player->getGold() + 75);
                 return;
-
             default:
-                cout << "Invalid choice — please pick 1, 2, or 3: ";
+                cout << "Enter 1, 2, or 3: ";
                 cin.clear();
                 cin.ignore(10000, '\n');
                 cin >> option;
