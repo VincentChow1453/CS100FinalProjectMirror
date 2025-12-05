@@ -7,11 +7,10 @@ BattleRoom* RoomGenerator::generateBattleRoom(){
 ShopRoom* RoomGenerator::generateShopRoom(){
     return new ShopRoom();
 }
-EventRoom* generateEventRoom(){
+EventRoom* RoomGenerator::generateEventRoom(){
     return new EventRoom();
 }
 Room* RoomGenerator::generateRandomRoom(){
-    srand(time(0));//Initializes random function
     const int BATTLE_ROOM_WEIGHT=10;//Currently, each room is equally likely.
     const int EVENT_ROOM_WEIGHT=10;//
     const int SHOP_ROOM_WEIGHT=10;//

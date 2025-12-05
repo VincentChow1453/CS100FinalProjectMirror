@@ -6,7 +6,6 @@ class BattleRoom : public Room {
 private:
 
 public:
-    BattleRoom() {} 
     void TriggerRoom() override;
     void OutputMapSymbol() const override;
 }; 
