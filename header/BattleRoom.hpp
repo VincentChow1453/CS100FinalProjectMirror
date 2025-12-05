@@ -4,9 +4,8 @@
 
 class BattleRoom : public Room {
 private:
-    BattleMenu* menu;
 
 public:
-    BattleRoom(BattleMenu* m) : menu(m) {}
+    BattleRoom() {} 
     void TriggerRoom() override;
 };
