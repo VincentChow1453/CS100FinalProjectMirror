@@ -178,10 +178,11 @@
 > * Map Generates
 > <img width="1576" height="507" alt="map" src="https://github.com/user-attachments/assets/9405da95-c3ed-4ac7-8cb7-c2afb2c8f47a" />
 > * Shop
-> <br />
+<br />
 > <img width="448" height="242" alt="shop" src="https://github.com/user-attachments/assets/7ecbd45c-18bf-4b25-930e-12838a59b40f" />
+<br />
 > * Battle
-> <br />
+<br />
 > <img width="708" height="498" alt="battle" src="https://github.com/user-attachments/assets/551cb3a1-8e93-4a4f-9506-81da3c159bd8" />
 
 
