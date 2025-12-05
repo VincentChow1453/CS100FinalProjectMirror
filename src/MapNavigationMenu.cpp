@@ -4,8 +4,7 @@
 using namespace std;
 MapNavigationMenu::MapNavigationMenu(){}
 MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight){
-    map.setMap(MapGenerator::GenerateMap(numRooms, newWidth, newHeight,&map));
-    map.setMapDimensions(newWidth, newHeight);
+    MapGenerator::GenerateMap(numRooms, newWidth, newHeight,&map);
 }
 void MapNavigationMenu::displayMenu()const{
     cout<<"Here is the current map of the dungeon."<<endl;

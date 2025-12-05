@@ -2,7 +2,7 @@
 #include <iostream>
 #include <random>
 using namespace std;
-vector<vector<Room*>>* MapGenerator::GenerateMap(int numRooms, const int mapWidth, const int mapHeight, DungeonMap* dunMapPtr){
+void MapGenerator::GenerateMap(int numRooms, const int mapWidth, const int mapHeight, DungeonMap* dunMapPtr){
     srand(time(0));//Initializes random function
     if(numRooms>mapWidth*mapHeight){
         throw runtime_error("ERROR in Generate Map. numRooms>mapWisth*mapHeight");
@@ -18,7 +18,6 @@ vector<vector<Room*>>* MapGenerator::GenerateMap(int numRooms, const int mapWidt
 
     int entranceXPos=rand()%mapHeight;
     int entranceYPos=rand()%mapWidth;
-    dunMapPtr->setPlayerCoords(entranceXPos,entranceYPos);
     int currXPos=entranceXPos;
     int currYPos=entranceYPos;
     int randDirection;//0=left, 1=up, 2=right, 3=down
@@ -49,6 +48,7 @@ vector<vector<Room*>>* MapGenerator::GenerateMap(int numRooms, const int mapWidt
             }
         }
     } 
-
-    return tempMap;
+    dunMapPtr->setPlayerCoords(entranceXPos,entranceYPos);
+    dunMapPtr->setMapDimensions(mapWidth,mapHeight);
+    dunMapPtr->setMap(tempMap);
 }

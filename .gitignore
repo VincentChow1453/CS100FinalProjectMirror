@@ -9,6 +9,11 @@ ScreenLayout.cpp
 runTerminalTests
 build/
 lib/
+y
+y.pub
+runBattleTesets
+.vscode/
+
 
 test/runMapTests
 test/runCharTests
@@ -16,3 +21,4 @@ test/runMonsterTests
 test/runShopTests
 test/runMainDriver
 test/runEventMenuTests
+test/runBattleTests

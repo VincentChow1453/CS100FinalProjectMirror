@@ -8,7 +8,7 @@ using std::vector;
 class MapGenerator {
     private:
     public:
-        static vector<vector<Room*>>* GenerateMap(int numRooms, const int mapWidth, const int mapHeight, DungeonMap* dunMapPtr);
+        static void GenerateMap(int numRooms, const int mapWidth, const int mapHeight, DungeonMap* dunMapPtr);
 };
 
 #endif /* DUNGEONGENERATOR_HPP */
