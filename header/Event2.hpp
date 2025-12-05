@@ -6,7 +6,7 @@
 class Event2 : public Event {
 public:
     void displayMenu() const override;
-    void chooseOption(int option, CharacterClass& player) override;
+    void chooseOption(int option) override;
 };
 
 #endif
