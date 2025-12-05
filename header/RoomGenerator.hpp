@@ -3,7 +3,6 @@
 #include "BattleRoom.hpp"
 #include "ShopRoom.hpp"
 #include "EventRoom.hpp"
-//currently a stub
 class RoomGenerator{
     private:
     public:

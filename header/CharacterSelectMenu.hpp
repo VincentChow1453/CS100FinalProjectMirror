@@ -1,8 +1,6 @@
 #pragma once
 #include "../header/CharacterClass.hpp"
-//#include "../header/mageClass.h"
-//#include "../header/warriorClass.h"
-//#include "../header/assassinClass.h"
+
 #include <vector>
 using namespace std;
 class CharacterSelectMenu{
