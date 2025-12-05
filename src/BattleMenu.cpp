@@ -18,15 +18,11 @@
 
 
 // Default Constructor: Initializes combat using the static player pointer.
-BattleMenu::BattleMenu() : combat(CharacterSelectMenu::player, new MonsterStats()) {
-    // Monster needs to be set separately or within startEncounter if needed.
-}
+BattleMenu::BattleMenu() : combat(CharacterSelectMenu::player, nullptr) {}
 
-
-// Helper function to get the string name of a status effect type.
 std::string getStatusName(StatusEffectType status) {
     switch (status) {
-        case NONE: return ""; // Not displayed on screen
+        case NONE: return ""; 
         case BURN: return "BURN";
         case POISON: return "POISON";
         case FREEZE: return "FREEZE";
@@ -36,7 +32,6 @@ std::string getStatusName(StatusEffectType status) {
     }
 }
 
-// Displays current combat status (HP, MP, Monster HP/Damage).
 void BattleMenu::displayMenu() const {
     std::cout << "\n--- Turn Start ---\n";
     std::cout << combat.getPlayerName() << " HP: " << CharacterSelectMenu::player->getBaseHealth() 
@@ -47,7 +42,6 @@ void BattleMenu::displayMenu() const {
     std::cout << "----------------------------------------\n"; 
 }
 
-// Handles the selection of a specific menu option (e.g., Run).
 void BattleMenu::chooseOption(int option) {
     switch (option) {
         case 4: // Run
@@ -68,18 +62,27 @@ void BattleMenu::chooseOption(int option) {
     }
 }
 
-// The main loop controlling the battle encounter logic.
 void BattleMenu::startEncounter(Room* newRoom) {
     std::cout << "Battle started!\n";
+
+    // Dynamically create the monster when the encounter starts.
+    delete combat.monster; 
+    combat.monster = MonsterStats::createRandomMonster(STAGE1).release(); 
+    
+    if (combat.monster == nullptr) {
+        std::cerr << "Error: Failed to create a monster for the encounter!" << std::endl;
+        return; 
+    }
 
     std::vector<Skill> skills;
     if (CharacterSelectMenu::player->getClassType() == "Warrior") { skills = Skill::getWarriorSkills(); }
     else if (CharacterSelectMenu::player->getClassType() == "Mage") { skills = Skill::getMageSkills(); }
     else if (CharacterSelectMenu::player->getClassType() == "Assassin") { skills = Skill::getAssassinSkills(); }
-    else { skills = Skill::getWarriorSkills(); } // Default case
+    else { skills = Skill::getWarriorSkills(); } 
+
     // Main battle loop
     while(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
-
+        
         combat.applyStatusDamage(); 
 
         if (combat.isMonsterDead() || combat.isPlayerDead() || fledSuccessfully) {
@@ -104,33 +107,62 @@ void BattleMenu::startEncounter(Room* newRoom) {
             if (!(std::cin >> choice)) {
                 std::cout << "Invalid input. Please enter a valid number.\n";
                 std::cin.clear(); 
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             } else {
                 if (choice == 1) {
-                    std::cout << "Select a skill:\n";
-                    for (size_t i = 0; i < skills.size(); ++i) { 
-                       // Skill display logic here (removed verbose comments)
-                    }
-                    int skillChoice;
-                    std::cout << "Enter skill choice: ";
-                     if (!(std::cin >> skillChoice)) {
-                         std::cout << "Invalid input. Please enter a valid number.\n";
-                         std::cin.clear(); 
-                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    } else if (skillChoice >= 1 && skillChoice <= skills.size()) {
-                        combat.playerAttack(skillChoice - 1);
-                        turnSpent = true; 
-                    } else {
-                        std::cout << "Invalid skill choice. Please choose again (Turn not spent).\n";
+                    // Attack menu
+                    while(!turnSpent) {
+                        std::cout << "Select a skill:\n";
+                        for (size_t i = 0; i < skills.size(); ++i) { 
+                            std::cout << i + 1 << ". " << skills[i].getName() 
+                                << " (Dmg: " << skills[i].getDamage() 
+                                << ", Mana: " << skills[i].getManaCost();
+                            
+                            std::string statusName = getStatusName(skills[i].getStatus());
+                            if (!statusName.empty()) {
+                                std::cout << ", Status: " << statusName;
+                            }
+
+                            if (skills[i].getEffect() == EFFECT_PLAYER_DEFENSE_UP) {
+                                std::cout << ", Effect: Defense Up (" << skills[i].getEffectDuration() << " turns)";
+                            }
+
+                            std::cout << ")\n";
+                        }
+                        std::cout << skills.size() + 1 << ". Back\n"; // Back option
+
+                        int skillChoice;
+                        std::cout << "Enter skill choice: ";
+                         if (!(std::cin >> skillChoice)) {
+                             std::cout << "Invalid input. Please enter a valid number.\n";
+                             std::cin.clear(); 
+                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        } else if (skillChoice >= 1 && skillChoice <= skills.size()) {
+                            combat.playerAttack(skillChoice - 1);
+                            turnSpent = true; 
+                        } else if (skillChoice == skills.size() + 1) {
+                            break; // Exit skill menu loop, return to main action menu
+                        } else {
+                            std::cout << "Invalid skill choice. Please choose again.\n";
+                        }
                     }
                 } else if (choice == 2) {
+                    // Item menu
                     const std::vector<std::string>& inventory = CharacterSelectMenu::player->getInventory();
-                    int itemIndex = inventory.size() + 1;
-                    if (inventory.empty()) {
-                        std::cout << "Inventory is empty! (Turn not spent).\n";
-                    } else {
-                        // Inventory display logic here (removed verbose comments)
+                    
+                    while(!turnSpent) {
+                        if (inventory.empty()) {
+                            std::cout << "Inventory is empty!\n";
+                            break; // Exit item menu loop if empty
+                        }
                         
+                        std::cout << "Inventory:\n";
+                        for (size_t i = 0; i < inventory.size(); i++) {
+                            std::cout << i + 1 << ". " << inventory[i] << "\n";
+                        }
+                        std::cout << inventory.size() + 1 << ". Back\n"; // Back option
+                        std::cout << "----------------------------------------\n"; 
+
                         int itemChoice;
                         std::cout << "Enter item choice: ";
                         if (!(std::cin >> itemChoice)) {
@@ -165,10 +197,10 @@ void BattleMenu::startEncounter(Room* newRoom) {
                             } else {
                                 std::cout << "This item cannot be used in battle! (Turn not spent).\n";
                             }
-                        } else if (itemChoice == itemIndex) {
-                            std::cout << "Returning to main menu (Turn not spent).\n";
+                        } else if (itemChoice == inventory.size() + 1) {
+                             break; // Exit item menu loop, return to main action menu
                         } else {
-                            std::cout << "Invalid choice (Turn not spent).\n";
+                            std::cout << "Invalid choice.\n";
                         }
                     }
                 }
@@ -178,12 +210,12 @@ void BattleMenu::startEncounter(Room* newRoom) {
                 } else if (choice == 4) {
                     chooseOption(choice); 
                 } else {
-                    std::cout << "Invalid choice. Please choose again (Turn not spent).\n";
+                    std::cout << "Invalid choice. Please choose again.\n";
                 }
             }
         }
 
-        // Monster attack phase: only proceeds if no one is dead and player hasn't fled
+        // Monster attack phase
         if(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
             if (!combat.isPlayerParalyzed()) { 
                 combat.monsterAttack();
@@ -198,9 +230,12 @@ void BattleMenu::startEncounter(Room* newRoom) {
     }
     
     returnToMap();
+
+    // Clean up dynamically allocated monster memory after the battle ends.
+    delete combat.monster;
+    combat.monster = nullptr; 
 } 
 
-// Prints a final message upon exiting the battle menu system.
 void BattleMenu::returnToMap() {
     std::cout << "Returning to the main map/previous room from BattleMenu. [FINAL]\n";
 }
