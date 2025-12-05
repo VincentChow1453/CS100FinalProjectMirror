@@ -2,7 +2,7 @@
 #include <iostream>
 #include <limits> 
 #include <vector>
-#include <cstdlib>
+#include <cstdlib> 
 #include <ctime>
 #include <map>
 #include <algorithm> 
@@ -15,9 +15,8 @@
 #include "../header/Items.hpp"
 #include "../header/LevelUp.hpp" 
 #include "CharacterSelectMenu.hpp" 
+#include "../header/MonsterStats.hpp"
 
-
-// Default Constructor: Initializes combat using the static player pointer.
 BattleMenu::BattleMenu() : combat(CharacterSelectMenu::player, nullptr) {}
 
 std::string getStatusName(StatusEffectType status) {
@@ -65,7 +64,6 @@ void BattleMenu::chooseOption(int option) {
 void BattleMenu::startEncounter(Room* newRoom) {
     std::cout << "Battle started!\n";
 
-    // Dynamically create the monster when the encounter starts.
     delete combat.monster; 
     combat.monster = MonsterStats::createRandomMonster(STAGE1).release(); 
     
@@ -80,7 +78,6 @@ void BattleMenu::startEncounter(Room* newRoom) {
     else if (CharacterSelectMenu::player->getClassType() == "Assassin") { skills = Skill::getAssassinSkills(); }
     else { skills = Skill::getWarriorSkills(); } 
 
-    // Main battle loop
     while(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
         
         combat.applyStatusDamage(); 
@@ -93,7 +90,6 @@ void BattleMenu::startEncounter(Room* newRoom) {
         
         bool turnSpent = false;
 
-        // Player turn loop
         while (!turnSpent && !fledSuccessfully) {
             std::cout << "Choose your action:\n";
             std::cout << "1. Attack\n";
@@ -110,7 +106,6 @@ void BattleMenu::startEncounter(Room* newRoom) {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             } else {
                 if (choice == 1) {
-                    // Attack menu
                     while(!turnSpent) {
                         std::cout << "Select a skill:\n";
                         for (size_t i = 0; i < skills.size(); ++i) { 
@@ -129,7 +124,7 @@ void BattleMenu::startEncounter(Room* newRoom) {
 
                             std::cout << ")\n";
                         }
-                        std::cout << skills.size() + 1 << ". Back\n"; // Back option
+                        std::cout << skills.size() + 1 << ". Back\n"; 
 
                         int skillChoice;
                         std::cout << "Enter skill choice: ";
@@ -138,29 +133,35 @@ void BattleMenu::startEncounter(Room* newRoom) {
                              std::cin.clear(); 
                              std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         } else if (skillChoice >= 1 && skillChoice <= skills.size()) {
-                            combat.playerAttack(skillChoice - 1);
-                            turnSpent = true; 
+                            if (CharacterSelectMenu::player->getBaseMana() >= skills[skillChoice - 1].getManaCost()) {
+                                CharacterSelectMenu::player->setBaseMana(CharacterSelectMenu::player->getBaseMana() - skills[skillChoice - 1].getManaCost());
+                                combat.playerAttack(skillChoice - 1);
+                                turnSpent = true;
+
+                                if (combat.isMonsterDead()) break; 
+                            } else {
+                                std::cout << "Not enough mana to cast " << skills[skillChoice - 1].getName() << "!\n";
+                            }
                         } else if (skillChoice == skills.size() + 1) {
-                            break; // Exit skill menu loop, return to main action menu
+                            break; 
                         } else {
-                            std::cout << "Invalid skill choice. Please choose again.\n";
+                            std::cout << "Invalid choice. Please choose again.\n";
                         }
                     }
                 } else if (choice == 2) {
-                    // Item menu
                     const std::vector<std::string>& inventory = CharacterSelectMenu::player->getInventory();
                     
                     while(!turnSpent) {
                         if (inventory.empty()) {
                             std::cout << "Inventory is empty!\n";
-                            break; // Exit item menu loop if empty
+                            break; 
                         }
                         
                         std::cout << "Inventory:\n";
                         for (size_t i = 0; i < inventory.size(); i++) {
                             std::cout << i + 1 << ". " << inventory[i] << "\n";
                         }
-                        std::cout << inventory.size() + 1 << ". Back\n"; // Back option
+                        std::cout << inventory.size() + 1 << ". Back\n"; 
                         std::cout << "----------------------------------------\n"; 
 
                         int itemChoice;
@@ -194,28 +195,51 @@ void BattleMenu::startEncounter(Room* newRoom) {
                                 if (strDiff > 0) { std::cout << combat.getPlayerName() << "'s strength increased by " << strDiff << "!\n"; }
             
                                 turnSpent = true;
+                                if (combat.isMonsterDead()) break; 
                             } else {
-                                std::cout << "This item cannot be used in battle! (Turn not spent).\n";
+                                std::cout << "This item cannot be used in battle!\n";
                             }
                         } else if (itemChoice == inventory.size() + 1) {
-                             break; // Exit item menu loop, return to main action menu
+                             break; 
                         } else {
                             std::cout << "Invalid choice.\n";
                         }
                     }
-                }
-                if (choice == 3) {
+                } else if (choice == 3) {
                     CharacterSelectMenu::player->displayClassInfo();
                     std::cout << "----------------------------------------\n"; 
                 } else if (choice == 4) {
                     chooseOption(choice); 
+                    turnSpent = true; 
+                    if (fledSuccessfully) break; 
                 } else {
                     std::cout << "Invalid choice. Please choose again.\n";
                 }
             }
         }
+        
+        if(combat.isMonsterDead()) {
+            int xpEarned = combat.monster->getXPReward();
+            int goldEarned = combat.monster->getGoldReward();
+            int currentGold = CharacterSelectMenu::player->getGold();
+            CharacterSelectMenu::player->setGold(currentGold + goldEarned);
 
-        // Monster attack phase
+            std::cout << "You gained " << xpEarned << " XP and " << goldEarned << " Gold!\n";
+            std::cout << "Total Gold: " << CharacterSelectMenu::player->getGold() << "\n";
+
+            if (combat.monster->getIsBoss()) { 
+                std::cout << "\n----------------------------------------\n";
+                std::cout << "!!! BOSS DEFEATED !!!\n";
+                std::cout << "Congratulations! You have saved the realm!\n";
+                std::cout << "GAME OVER (Success)\n";
+                std::cout << "----------------------------------------\n";
+                delete combat.monster; 
+                exit(0); 
+            }
+
+            break; 
+        }
+
         if(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
             if (!combat.isPlayerParalyzed()) { 
                 combat.monsterAttack();
@@ -231,7 +255,6 @@ void BattleMenu::startEncounter(Room* newRoom) {
     
     returnToMap();
 
-    // Clean up dynamically allocated monster memory after the battle ends.
     delete combat.monster;
     combat.monster = nullptr; 
 } 

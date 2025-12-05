@@ -6,7 +6,7 @@
 #include <vector>
 
 class Combat {
-public: // <-- Changed from private: to public:
+public:
     CharacterClass* player;
     MonsterStats* monster;
 private:
@@ -24,7 +24,7 @@ private:
 // ... (rest of the class definition remains the same) ...
 public:
     Combat(CharacterClass* p, MonsterStats* m);
-    void playerAttack(int skillIndex);
+    void playerAttack(int skillIndex); 
     void monsterAttack();
     void playerDefend();
     void applyStatus(CharacterClass* target, StatusEffectType statusType);
