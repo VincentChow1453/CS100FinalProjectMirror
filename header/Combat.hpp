@@ -18,6 +18,7 @@ private:
     int monsterBurnStacks;
     int monsterPoisonStacks;
     int freezeDuration;
+    int monsterDoomStacks;
     int playerDefenseBuffDuration;
     int playerDefenseBuffValue;
 // ... (rest of the class definition remains the same) ...

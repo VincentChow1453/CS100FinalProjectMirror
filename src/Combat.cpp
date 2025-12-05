@@ -10,7 +10,8 @@ using namespace std;
 Combat::Combat(CharacterClass* p, MonsterStats* m) 
     : player(p), monster(m), playerDefending(false), playerStatus(NONE), monsterStatus(NONE),
       playerBurnStacks(0), playerPoisonStacks(0), monsterBurnStacks(0), monsterPoisonStacks(0),
-      freezeDuration(0), playerDefenseBuffDuration(0), playerDefenseBuffValue(0) {}
+      monsterDoomStacks(0), freezeDuration(0), playerDefenseBuffDuration(0), 
+      playerDefenseBuffValue(0) {}
 
 void Combat::playerAttack(int skillIndex) {
     vector<Skill> skills;
@@ -73,15 +74,17 @@ void Combat::monsterAttack() {
     string mName = monster->getName();
     int chance = rand() % 100;
 
-    if (mName == "Slime" && chance < 80) { // 80% chance POISON
+    if (mName == "Bandit" && chance < 80) { // 80% chance POISON
         applyStatus(player, POISON);
     } else if ((mName == "Necromancer" || mName == "Witch") && chance < 50) { // 50% chance BURN
         applyStatus(player, BURN);
-    } else if ((mName == "Dark Knight" || mName == "Death Dragon") && chance < 30) { // 30% chance PARALYSIS
+    } else if ((mName == "Dark Knight" || mName == "Golem") && chance < 30) { // 30% chance PARALYSIS
         applyStatus(player, PARALYSIS);
-    } else if ((mName == "Harpy" || mName == "Minotaur") && chance < 50) { // 50% chance FREEZE
+    } else if ((mName == "Witch") && chance < 50) { // 50% chance FREEZE
          applyStatus(player, FREEZE);
-    }
+    } else if // 100% chance DOOM
+    ((mName == "Death Dragon") ) { applyStatus(player, DOOM); // Always apply DOOM
+}
 }
 
 void Combat::playerDefend() {
@@ -103,7 +106,7 @@ void Combat::applyStatus(CharacterClass* target, StatusEffectType statusType) {
     } else { // Apply to monster
         if (statusType == BURN) monsterBurnStacks = min(3, monsterBurnStacks + 1);
         else if (statusType == POISON) monsterPoisonStacks = min(8, monsterPoisonStacks + 1);
-        
+        else if (statusType == DOOM) monsterDoomStacks = min(10, monsterDoomStacks +1);
          cout << (toPlayer ? player->getName() : monster->getName()) << " is now affected by status: " << statusType << "!\n";
     }
 }
@@ -139,7 +142,13 @@ void Combat::applyStatusDamage() {
         monster->setCurrentHP(monster->getCurrentHP() - dmg);
         cout << monster->getName() << " takes " << dmg << " damage from POISON (" << monsterPoisonStacks << " stacks)!\n";
     }
+    if (monsterDoomStacks == 10) {
+        int dmg = 9999999;
+        monster->setCurrentHP(monster->getCurrentHP() - dmg);
+        cout << monster->getName() << " is consumed by DOOM!\n";
+    }
 }
+
 
 void Combat::updateDurations() {
     if (freezeDuration > 0) {

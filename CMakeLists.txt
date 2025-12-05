@@ -93,14 +93,20 @@ ADD_EXECUTABLE(runMainDriver
 SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
-ADD_EXECUTABLE(runEventMenuTests
-test/testEventMenu.cpp
-    src/EventMenu.cpp
+
+ADD_EXECUTABLE(runEventSystemTests
+    test/testEventSystem.cpp
     src/EncounterMenu.cpp
+    src/EventMenu.cpp
+    src/Event1.cpp
+    src/Event2.cpp
+    src/Event3.cpp
+    src/Event4.cpp
+    src/EventRoom.cpp
     src/Room.cpp
     src/CharacterClass.cpp
 )
-target_link_libraries(runEventMenuTests gmock gtest gtest_main)
-SET_TARGET_PROPERTIES(runEventMenuTests PROPERTIES
-RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
+
+SET_TARGET_PROPERTIES(runEventSystemTests PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 )
