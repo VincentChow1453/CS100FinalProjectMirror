@@ -18,7 +18,7 @@
 
 
 // Default Constructor: Initializes combat using the static player pointer.
-BattleMenu::BattleMenu() : combat(CharacterSelectMenu::player, nullptr) {
+BattleMenu::BattleMenu() : combat(CharacterSelectMenu::player, new MonsterStats()) {
     // Monster needs to be set separately or within startEncounter if needed.
 }
 
@@ -79,7 +79,6 @@ void BattleMenu::startEncounter(Room* newRoom) {
     else { skills = Skill::getWarriorSkills(); } // Default case
     // Main battle loop
     while(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
-        cout<<"test"<<endl;
 
         combat.applyStatusDamage(); 
 
