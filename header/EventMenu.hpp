@@ -16,7 +16,7 @@ private:
 
 public:
     EventMenu();
-    void startEncounter(Room* newRoom) override;
+    void startEncounter(Room* newRoom);
 };
 
 #endif

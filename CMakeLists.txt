@@ -96,6 +96,7 @@ RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
 
 ADD_EXECUTABLE(runEventSystemTests
     test/testEventSystem.cpp
+    src/CharacterSelectMenu.cpp
     src/EncounterMenu.cpp
     src/EventMenu.cpp
     src/Event1.cpp
