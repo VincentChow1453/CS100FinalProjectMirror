@@ -11,6 +11,7 @@ vector<Item> items = {
     Item("Protein Bar", 10, "mana", 20),
     Item("Bandage", 5, "health", 20),
     Item("Health Potion", 15, "health", 50),
+    Item("Rare Gem", 50, "none", 0)
 };
 
 // Helper Function to identify items in other functions like buy and sell
