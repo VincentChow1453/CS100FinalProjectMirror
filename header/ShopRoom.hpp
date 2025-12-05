@@ -9,10 +9,11 @@
 class ShopRoom : public Room {
 private:
     Shop roomShop;
+    CharacterClass* player;
 
 public: 
     ShopRoom() {}
-    void TriggerEncounter(CharacterClass& player);  
+    void TriggerEncounter();  
     void OutputMapSymbol() const override;
 };
 
