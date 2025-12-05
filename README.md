@@ -170,6 +170,22 @@
  
  ## Screenshots
  > Screenshots of the input/output after running your application
+> *
+> * Start Screen
+><img width="1423" height="163" alt="main" src="https://github.com/user-attachments/assets/64cf2643-433c-4642-8587-ec51864a5a5e" />
+> * Character Select
+><img width="962" height="362" alt="character" src="https://github.com/user-attachments/assets/fe117b41-0b33-4b61-a0cf-be3a927b4bc4" />
+> * Map Generates
+> <img width="1576" height="507" alt="map" src="https://github.com/user-attachments/assets/9405da95-c3ed-4ac7-8cb7-c2afb2c8f47a" />
+> * Shop
+<br />
+> <img width="448" height="242" alt="shop" src="https://github.com/user-attachments/assets/7ecbd45c-18bf-4b25-930e-12838a59b40f" />
+<br />
+> * Battle
+<br />
+> <img width="708" height="498" alt="battle" src="https://github.com/user-attachments/assets/551cb3a1-8e93-4a4f-9506-81da3c159bd8" />
+
+
  ## Installation/Usage
  * Run "git clone https://github.com/cs100/final-project-cool-team.git" on your terminal
  * Run cd final-project-cool-team.git
