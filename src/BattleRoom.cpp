@@ -4,7 +4,7 @@ using namespace std;
 
 void BattleRoom::TriggerRoom() {
     cout << "Entering Battle Room!\n";
-     if (menu) {
-                menu->startEncounter(this);
-     }
+    BattleMenu new_menu_object; 
+    new_menu_object.startEncounter(this);
+
 }
