@@ -30,11 +30,11 @@ void MapGenerator::GenerateMap(int numRooms, const int mapWidth, const int mapHe
     while(numRooms>0){
         if(tempMap->at(currYPos).at(currXPos)==nullptr){//If we find an empty space then
             if(currXPos==entranceXPos&&currYPos==entranceYPos){//If that space is the entrance (i.e. on the first run)
-                tempMap->at(currYPos).at(currXPos)=new EntranceRoom;                                      //Replace Room with Entrance subclass
+                tempMap->at(currYPos).at(currXPos)=new EntranceRoom();                                                       //Replace Room with Entrance subclass
                 
             }
             else{                                               //Otherwise
-                tempMap->at(currYPos).at(currXPos)=RoomGenerator::generateRandomRoom()d;                                      //Replace Room with a random selection of EventRoom BattleRoom and ShopRoom
+                tempMap->at(currYPos).at(currXPos)=RoomGenerator::generateRandomRoom();                                      //Replace Room with a random selection of EventRoom BattleRoom and ShopRoom
             }
             numRooms--;
         }

@@ -52,6 +52,8 @@ ADD_EXECUTABLE(runMapTests
     src/MapNavigationMenu
     src/EncounterMenu.cpp
     src/MapDisplayer.cpp
+    src/RoomGenerator.cpp
+    src/EntranceRoom.cpp
 )
 target_link_libraries(runMapTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runMapTests PROPERTIES
@@ -88,7 +90,8 @@ ADD_EXECUTABLE(runMainDriver
     src/Room.cpp
     src/MapGenerator.cpp
     src/EncounterMenu.cpp
-    
+    src/RoomGenerator.cpp
+    src/EntranceRoom.cpp
 )
 SET_TARGET_PROPERTIES(runMainDriver PROPERTIES
 RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/test"
