@@ -8,7 +8,7 @@ MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const
 }
 void MapNavigationMenu::displayMenu()const{
     cout<<"Here is the current map of the dungeon."<<endl;
-    cout<<"Key: [ ]=Empty space; [X]=Room; [H]=You are Here."<<endl;
+    cout<<"Key: [ ]=Empty space; [X]=Entrance Room; [B]=Battle Room; [E]=Event Room; [S]=Shop Room; [H]=You are Here."<<endl;
     MapDisplayer::DisplayMap(&map);
     cout<<"Here are the actions you may take"<<endl;
     cout<<"1. Go Up."<<endl;

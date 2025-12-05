@@ -5,15 +5,15 @@
 #include "Shop.hpp"
 #include "ShopMenu.hpp"
 #include "CharacterClass.hpp"
+#include "CharacterSelectMenu.hpp"
 
 class ShopRoom : public Room {
 private:
     Shop roomShop;
-    CharacterClass* player;
 
 public: 
     ShopRoom() {}
-    void TriggerEncounter();  
+    void TriggerRoom() override;  
     void OutputMapSymbol() const override;
 };
 

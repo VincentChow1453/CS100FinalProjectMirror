@@ -1,8 +1,8 @@
 #include "ShopRoom.hpp"
 
-void ShopRoom::TriggerEncounter() {
+void ShopRoom::TriggerRoom() {
     BoundaryShopMenu menu;
-    menu.checkShop(roomShop, *player);
+    menu.checkShop(roomShop, *CharacterSelectMenu::player);
 }
 void ShopRoom::OutputMapSymbol()const{
     cout<<"S";

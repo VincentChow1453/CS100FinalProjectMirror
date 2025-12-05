@@ -73,6 +73,8 @@ ADD_EXECUTABLE(runMapTests
     src/Items.cpp
     src/ItemClass.cpp
     src/LevelUp.cpp
+    src/CharacterSelectMenu.cpp
+
 )
 target_link_libraries(runMapTests gmock gtest gtest_main)
 SET_TARGET_PROPERTIES(runMapTests PROPERTIES
@@ -90,6 +92,8 @@ ADD_EXECUTABLE(runShopTests
     src/CharacterClass.cpp
     src/Room.cpp
     src/EncounterMenu.cpp
+    src/CharacterSelectMenu.cpp
+
 )
 
 target_link_libraries(runShopTests gmock gtest gtest_main)
