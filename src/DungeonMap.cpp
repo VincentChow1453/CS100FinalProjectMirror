@@ -6,18 +6,17 @@ DungeonMap::DungeonMap(){
     playerY=-1;
     width=0;
     height=0;
-    mapMatrix=new vector<vector<Room*>>;
+    mapMatrix=nullptr;
 }
 DungeonMap::~DungeonMap(){
     if(mapMatrix!=nullptr){
         for(int i=0; i<mapMatrix->size();i++){
-        for(int j=0;j<mapMatrix->at(i).size();j++){
-            delete mapMatrix->at(i).at(j);
-        }
+            for(int j=0;j<mapMatrix->at(i).size();j++){
+                delete mapMatrix->at(i).at(j);
+            }
+        }   
     }
     delete mapMatrix;
-    }
-
 }
 int DungeonMap::getPlayerX() const{
     return playerX;
@@ -43,6 +42,13 @@ vector<vector<Room*>>* DungeonMap::getMap() const{
     return mapMatrix;
 }
 void DungeonMap::setMap(vector<vector<Room*>>* newMapPtr){
+    if(mapMatrix!=nullptr){
+        for(int i=0; i<mapMatrix->size();i++){
+            for(int j=0;j<mapMatrix->at(i).size();j++){
+                delete mapMatrix->at(i).at(j);
+            }
+        }   
+    }
     delete mapMatrix;
     mapMatrix=newMapPtr;
 }

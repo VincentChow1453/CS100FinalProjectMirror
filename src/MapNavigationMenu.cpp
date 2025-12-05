@@ -2,6 +2,7 @@
 #include "../header/MapDisplayer.hpp"
 #include <iostream>
 using namespace std;
+MapNavigationMenu::~MapNavigationMenu(){}
 MapNavigationMenu::MapNavigationMenu(){}
 MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const int newHeight){
     MapGenerator::GenerateMap(numRooms, newWidth, newHeight,&map);
