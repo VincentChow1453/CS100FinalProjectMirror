@@ -15,7 +15,7 @@ DungeonMap::~DungeonMap(){
             delete mapMatrix->at(i).at(j);
         }
     }
-        delete mapMatrix;
+    delete mapMatrix;
     }
 
 }

@@ -77,10 +77,10 @@ void BattleMenu::startEncounter(Room* newRoom) {
     else if (CharacterSelectMenu::player->getClassType() == "Mage") { skills = Skill::getMageSkills(); }
     else if (CharacterSelectMenu::player->getClassType() == "Assassin") { skills = Skill::getAssassinSkills(); }
     else { skills = Skill::getWarriorSkills(); } // Default case
-
     // Main battle loop
     while(!combat.isMonsterDead() && !combat.isPlayerDead() && !fledSuccessfully) {
-        
+        cout<<"test"<<endl;
+
         combat.applyStatusDamage(); 
 
         if (combat.isMonsterDead() || combat.isPlayerDead() || fledSuccessfully) {

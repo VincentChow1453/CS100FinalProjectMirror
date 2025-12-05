@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../header/CharacterClass.hpp"
 //#include "../header/mageClass.h"
 //#include "../header/warriorClass.h"

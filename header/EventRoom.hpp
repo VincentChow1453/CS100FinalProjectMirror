@@ -9,6 +9,7 @@ private:
 
 public:
     void TriggerRoom() override;
+    void OutputMapSymbol() const override;
 };
 
 #endif

@@ -8,7 +8,7 @@ MapNavigationMenu::MapNavigationMenu(const int numRooms,const int newWidth,const
 }
 void MapNavigationMenu::displayMenu()const{
     cout<<"Here is the current map of the dungeon."<<endl;
-    cout<<"Key: [ ]=Empty space; [X]=Room; [H]=You are Here."<<endl;
+    cout<<"Key: [ ]=Empty space; [X]=Entrance Room; [B]=Battle Room; [E]=Event Room; [S]=Shop Room; [H]=You are Here."<<endl;
     MapDisplayer::DisplayMap(&map);
     cout<<"Here are the actions you may take"<<endl;
     cout<<"1. Go Up."<<endl;
@@ -56,7 +56,7 @@ void MapNavigationMenu::GoLeft(){
         return;
     }
     map.setPlayerCoords(map.getPlayerX()-1,map.getPlayerY());
-   MapDisplayer::DisplayMap(&map);
+    MapDisplayer::DisplayMap(&map);
     map.getPlayerRoom()->TriggerRoom();
 }
 void MapNavigationMenu::GoRight(){
@@ -66,17 +66,17 @@ void MapNavigationMenu::GoRight(){
         return;
     }
     map.setPlayerCoords(map.getPlayerX()+1,map.getPlayerY());
-   MapDisplayer::DisplayMap(&map);
+    MapDisplayer::DisplayMap(&map);
     map.getPlayerRoom()->TriggerRoom();
 }
 void MapNavigationMenu::GoUp(){
     if(map.getPlayerY()==map.getHeight()-1||map.getMap()->at(map.getPlayerY()+1).at(map.getPlayerX())==nullptr){
         cout<<"Cannot go any further Up"<<endl;
-       MapDisplayer::DisplayMap(&map);
+        MapDisplayer::DisplayMap(&map);
         return;
     }
     map.setPlayerCoords(map.getPlayerX(),map.getPlayerY()+1);
-   MapDisplayer::DisplayMap(&map);
+    MapDisplayer::DisplayMap(&map);
     map.getPlayerRoom()->TriggerRoom();
 }
 void MapNavigationMenu::GoDown(){
@@ -86,7 +86,7 @@ void MapNavigationMenu::GoDown(){
         return;
     }
     map.setPlayerCoords(map.getPlayerX(),map.getPlayerY()-1);
-   MapDisplayer::DisplayMap(&map);
+    MapDisplayer::DisplayMap(&map);
     map.getPlayerRoom()->TriggerRoom();
 }
 DungeonMap* MapNavigationMenu::getMap(){

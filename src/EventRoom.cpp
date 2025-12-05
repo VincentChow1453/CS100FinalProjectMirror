@@ -8,3 +8,6 @@ void EventRoom::TriggerRoom(){//This will be the general layout for all Room typ
     menu.startEncounter(this);
     cout<<"Room TriggerRoom() stub"<<endl;
 }
+void EventRoom::OutputMapSymbol()const{
+    cout<<"E";
+}
