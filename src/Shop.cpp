@@ -8,6 +8,8 @@ Shop::Shop() {
         "Wooden Sword",
         "Stone Sword",
         "Metal Sword",
+        "Apple",
+        "Protein Bar",
         "Bandage",
         "Health Potion",
         "Rare Gem"
