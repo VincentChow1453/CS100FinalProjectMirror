@@ -171,7 +171,11 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+ * Run "git clone https://github.com/cs100/final-project-cool-team.git" on your terminal
+ * Run cd final-project-cool-team.git
+ * Run cmake .
+ * Run make
+ * Run /runMain
  ## Testing
  * We tested for memory leaks with Valgrind
  * We created unit tests for most classes/functions in our project
