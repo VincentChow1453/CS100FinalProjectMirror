@@ -6,7 +6,7 @@ DungeonMap::DungeonMap(){
     playerY=-1;
     width=0;
     height=0;
-    mapMatrix=nullptr;
+    mapMatrix=new vector<vector<Room*>>();
 }
 DungeonMap::~DungeonMap(){
     if(mapMatrix!=nullptr){
@@ -40,6 +40,9 @@ void DungeonMap::setMapDimensions(const int newWidth,const int newHeight){
     width=newWidth;
 }
 vector<vector<Room*>>* DungeonMap::getMap() const{
+    return mapMatrix;
+}
+vector<vector<Room*>>* DungeonMap::getMap(){
     return mapMatrix;
 }
 void DungeonMap::setMap(vector<vector<Room*>>* newMapPtr){

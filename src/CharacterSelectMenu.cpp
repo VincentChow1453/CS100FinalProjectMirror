@@ -33,7 +33,7 @@ CharacterClass* CharacterSelectMenu::selectCharacterHelper(){
     cin>>newName;
     if(playerChoice==1){
         cout<<"You have selected the wize Mage "<<newName<<"."<<endl;
-        return new CharacterClass("Mage",newName,100,50,10,1,50);//replace this with mageClass
+        return new CharacterClass("Mage",newName,1,50,10,1,50);//replace this with mageClass
     }
     if(playerChoice==2){
         cout<<"You have selected the brave Warrior "<<newName<<"."<<endl;

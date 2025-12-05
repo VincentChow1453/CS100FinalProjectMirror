@@ -36,6 +36,10 @@ void MapNavigationMenu::chooseOption(const int option){
     }
 }
 void MapNavigationMenu::startMenu(){
+    if(CharacterSelectMenu::player!=nullptr&&CharacterSelectMenu::player->getBaseHealth()<=0){
+        cout<<"YOU ARE DEAD."<<endl<<"Game over."<<endl<<endl;
+        return;
+    }
     displayMenu();
     int playerChoice;
     cin>>playerChoice;

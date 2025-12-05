@@ -2,6 +2,7 @@
 #define MAPNAVIGATIONMENU_HPP
 #include "DungeonMap.hpp"
 #include "MapGenerator.hpp"
+#include "CharacterSelectMenu.hpp"
 class MapNavigationMenu{
     private:
         DungeonMap map;
