@@ -1,6 +1,14 @@
 This project is a simple terminal based dungeon crawler game that I made for my CS100 final project at UCR. In terms of coding, I worked on most of the classes and fucntions related to the dungeon map, such as map generation, map navigation, and entering rooms. In terms of planning, I planned the broad skeleton of how our game would work, which is that the MapNavigationMenu would be called in main, and almost all other game menus would be called by the MapNavigationMenu whenever the player enters a room. Our group organized ourselves along the lines of the scrum framework, and I served as the Scrum master.
 Below are a series of status updates that we were required to write for our TA and graders. They outline the broad structure of our game, and there is a series of Class and Navigation Diagrams.
-
+ ## Installation/Usage
+ * Run "git clone https://github.com/VincentChow1453/CS100FinalProjectMirror.git" on your terminal
+ * Run "cd final-project-cool-team.git"
+ * Run "cmake ."
+    * If you run into an issue regarding googletest, you will have to remove and reinstall it.
+    * Run "git rm -f test/googletest"
+    * Run "git submodule add https://github.com/google/googletest.git test/googletest"
+ * Run "make"
+ * Run "/runMain"
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/EvxoT0RF)
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=21155946)
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
@@ -189,12 +197,7 @@ Below are a series of status updates that we were required to write for our TA a
 > <img width="708" height="498" alt="battle" src="https://github.com/user-attachments/assets/551cb3a1-8e93-4a4f-9506-81da3c159bd8" />
 
 
- ## Installation/Usage
- * Run "git clone https://github.com/VincentChow1453/CS100FinalProjectMirror.git" on your terminal
- * Run cd final-project-cool-team.git
- * Run cmake .
- * Run make
- * Run /runMain
+
  ## Testing
  * We tested for memory leaks with Valgrind
  * We created unit tests for most classes/functions in our project
